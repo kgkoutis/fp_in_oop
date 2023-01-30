@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c6f35bb3-889f-4b26-9da0-6808931594d6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/functionalfactories/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/functionalfactories/after/Options.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/functionalfactories/after/Program.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/functionalfactories/after/Program2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/functionalfactories/before/LoggerOptionsFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/functionalfactories/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/functionalfactories/before/Options.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/functionalfactories/before/Program.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/partialapplication/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/partialapplication/before/Adder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/partialapplication/before/FixedAdder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/dependencyinjection/partialapplication/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/functioncomposition/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/functioncomposition/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/handling_void_and_no_input/after/A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/handling_void_and_no_input/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/handling_void_and_no_input/before/A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/handling_void_and_no_input/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/loanpattern/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/loanpattern/after/Resource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/loanpattern/after/StopWatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/loanpattern/before/Resource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/loanpattern/before/StopWatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/after/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/after/PersonsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/after/SqliteConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/after/company.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/before/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/before/PersonsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/before/SqliteConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/sideeffects/before/company.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/typescomposition/after/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/typescomposition/after/Direwolf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/typescomposition/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/typescomposition/after/Wolf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/typescomposition/before/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/typescomposition/before/Direwolf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/typescomposition/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/composability/typescomposition/before/Wolf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/exceptionhandling/after/ApiCrashedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/exceptionhandling/after/DivisionByZeroException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/exceptionhandling/after/ExceptionTypeAndMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/exceptionhandling/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/exceptionhandling/before/ApiCrashedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/exceptionhandling/before/DivisionByZeroException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/exceptionhandling/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/extendingtypes/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/extendingtypes/after/Wind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/extendingtypes/after/WindExtender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/extendingtypes/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/extendingtypes/before/Wind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/extendingtypes/before/WindHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/immutability/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/immutability/after/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/immutability/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/immutability/before/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lazyevaluation/after/FakeDbConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lazyevaluation/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lazyevaluation/after/MainMemoiser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lazyevaluation/before/FakeDbConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lazyevaluation/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/Firstname.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/Lastname.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/firstname/Hero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/firstname/HeroOptics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/firstname/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/lastname/Hero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/lastname/HeroOptics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/lastname/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/before/Firstname.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/before/Hero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/before/Lastname.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/after/Cat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/after/Dog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/after/Parrot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/after/Pet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/after/PetExtensions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/after/PetSoundVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/after/PetVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/before/Cat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/before/Dog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/before/Parrot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/patternmatching/before/Pet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/streams/after/MainWithResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/streams/after/MainWithThrowingFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/streams/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/order.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/buildingpatterns/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/buildingpatterns/after/NutritionFactsTelescopingConstructor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/buildingpatterns/after/NutritionFactsWithBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/buildingpatterns/after/recursivegenerics/Calzone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/buildingpatterns/after/recursivegenerics/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/buildingpatterns/after/recursivegenerics/NyPizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/buildingpatterns/after/recursivegenerics/Pizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/buildingpatterns/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/buildingpatterns/before/NutritionFacts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/discriminatedunions/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/discriminatedunions/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/missingabstractions/after/CatOwner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/missingabstractions/after/DogOwner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/missingabstractions/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/missingabstractions/after/Veterinarian.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/missingabstractions/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/missingabstractions/before/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/missingabstractions/before/Veterinarian.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/after/DepartmentCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/after/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/after/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/before/DepartmentCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/before/Helpers/DepartmentCodeCopier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/before/Helpers/DepartmentCodeEqualityComparer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/before/Helpers/DepartmentCodePrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/before/Helpers/DepartmentCodeValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/before/Helpers/LocationPicker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/before/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/course/typestypestypes/primitiveobsession/before/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/Unit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/Either.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/Left.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/Right.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherBiBindVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherBiMapVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherBindLeftVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherBindVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherIfLeftRightVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherIfLeftVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherIfRightVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherIsLeftVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherMapLeftVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherMapVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/either/visitors/EitherVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/lazy/Memoizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/lazy/Thunk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/lenses/Lens.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/lenses/LensCompositions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/lenses/LensExtensions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/Just.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/Maybe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/Nothing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/visitors/MaybeBindVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/visitors/MaybeIfJustVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/visitors/MaybeIfNothingVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/visitors/MaybeIsJustVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/visitors/MaybeIsNothingVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/visitors/MaybeMapVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/maybe/visitors/MaybeVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/prisms/Prism.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/prisms/PrismCompositions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/prisms/PrismExtensions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/throwing/ThrowingConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/throwing/ThrowingFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/throwing/ThrowingSupplier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/pair/ComparablePair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/pair/Pair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/pair/Pairs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/pair/SimplePair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/quadruple/ComparableQuadruple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/quadruple/Quadruple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/quadruple/Quadruples.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/quadruple/SimpleQuadruple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/quintuples/ComparableQuintuple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/quintuples/Quintuple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/quintuples/Quintuples.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/quintuples/SimpleQuintuple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/triples/ComparableTriple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/triples/SimpleTriple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/triples/Triple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/reusable/tuples/triples/Triples.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/course/composability/sideeffects/after/MainTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/firstname/FirstNameLens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/course/functionalstyle/lenses/after/firstname/FirstNameLens.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="JUnit3 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.jdks/corretto-17.0.6/lib/src.zip!/java.base/java/util/stream/Stream.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="nyn1bl4q" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2KSEA2XH78llDgglNwg2zbIppWM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "full.screen.before.presentation.mode": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last.edited.regexp": "",
+    "last_opened_file_path": "C:/Users/KostasGkoutis/Desktop/fp_in_oop/src/main/java/org/course/functionalstyle/lenses/before",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.reader.mode",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.reusable.tuples.quintuples" />
+      <recent name="org.reusable.tuples.quadruple" />
+      <recent name="org.reusable.tuples" />
+      <recent name="org.course.composability.dependencyinjection.partialapplication.before" />
+      <recent name="org.course.composability.dependencyinjection.before" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\KostasGkoutis\Desktop\fp_in_oop\src\main\java\org\course\functionalstyle\lenses\before" />
+      <recent name="C:\Users\KostasGkoutis\Desktop\fp_in_oop\src\main\java\org\course\functionalstyle\lenses\after\firstname" />
+      <recent name="C:\Users\KostasGkoutis\Desktop\fp_in_oop\src\main\java\org\course\functionalstyle\lenses\after\lastname" />
+      <recent name="C:\Users\KostasGkoutis\Desktop\fp_in_oop\src\main\java\org\reusable" />
+      <recent name="C:\Users\KostasGkoutis\Desktop\course\src\main\java\org\example\functionalstyle\streams\after" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.reusable" />
+      <recent name="org.example.functionalstyle.exceptionhandling.after.either.visitors" />
+      <recent name="org.example.composability.sideeffects.after" />
+      <recent name="org.example.missingabstractions.after" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example.extendingtypes.before" />
+      <recent name="org.example.extendingtypes.after" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.course.composability.dependencyinjection.after" />
+      <recent name="org.course.functionalstyle.lenses.after.lastname" />
+      <recent name="org.reusable.lazy" />
+      <recent name="org.reusable" />
+      <recent name="org.example.functionalstyle.streams.after" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MainTests">
+    <configuration name="org.course.functionalstyle.lazyevaluation.before.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.course.functionalstyle.lazyevaluation.before.Main" />
+      <module name="fp_in_oop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.course.functionalstyle.lazyevaluation.before.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.course.functionalstyle.lenses.after.firstname.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.course.functionalstyle.lenses.after.firstname.Main" />
+      <module name="fp_in_oop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.course.functionalstyle.lenses.after.firstname.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.course.functionalstyle.lenses.after.lastname.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.course.functionalstyle.lenses.after.lastname.Main" />
+      <module name="fp_in_oop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.course.functionalstyle.lenses.after.lastname.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.course.functionalstyle.lenses.before.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.course.functionalstyle.lenses.before.Main" />
+      <module name="fp_in_oop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.course.functionalstyle.lenses.before.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fp_in_oop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.course.composability.sideeffects.after.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.course.composability.sideeffects.after" />
+      <option name="MAIN_CLASS_NAME" value="org.course.composability.sideeffects.after.MainTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MainTests" />
+        <item itemvalue="Application.org.course.functionalstyle.lenses.after.lastname.Main" />
+        <item itemvalue="Application.org.course.functionalstyle.lenses.after.firstname.Main" />
+        <item itemvalue="Application.org.course.functionalstyle.lenses.before.Main" />
+        <item itemvalue="Application.org.course.functionalstyle.lazyevaluation.before.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c6f35bb3-889f-4b26-9da0-6808931594d6" name="Changes" comment="" />
+      <created>1673959444818</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673959444818</updated>
+      <workItem from="1673959445765" duration="635000" />
+      <workItem from="1673960148098" duration="1046000" />
+      <workItem from="1673961256232" duration="17565000" />
+      <workItem from="1674042030525" duration="10373000" />
+      <workItem from="1674071573504" duration="10282000" />
+      <workItem from="1674125975213" duration="8780000" />
+      <workItem from="1674212258813" duration="22534000" />
+      <workItem from="1674483132925" duration="89000" />
+      <workItem from="1674483261303" duration="8211000" />
+      <workItem from="1674514528337" duration="10870000" />
+      <workItem from="1674672353111" duration="19463000" />
+      <workItem from="1674730076402" duration="3314000" />
+      <workItem from="1674734021057" duration="8351000" />
+      <workItem from="1674814343222" duration="23437000" />
+      <workItem from="1674939783236" duration="18076000" />
+      <workItem from="1675016083262" duration="22199000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
