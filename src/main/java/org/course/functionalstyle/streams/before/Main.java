@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * List Processing is a very common and fundamental task in FP. LISP took its name for it, the pioneer of FP programming. It allows the programmer to express
+ * List Processing is a very common and fundamental task in FP. Lisp took its name for it, the pioneer of FP programming. It allows the programmer to express
  * the computations he/she wants to perform without writing for loops, while loops, if statements, etc and other low level imperative code.
  * Nowadays, all languages have some kind of list processing capabilities, in the form of map, filter, reduce, etc.
  * <p>
