@@ -21,11 +21,13 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import static org.reusable.lenses.Lens.of;
+
 public class LensExtensions {
     /**
      * Pair two lenses
-     * */
-    public static <A, B, C, D> Lens<Pair<A, B>, Pair<C, D>> pair(Lens<A, C> First, Lens<B, D> Second) {
+     */
+    public static <A, B, C, D> Lens<Pair<A, B>, Pair<C, D>> pair(final Lens<A, C> First,
+                                                                 final Lens<B, D> Second) {
         return of(
                 a -> Pairs.of(First.getF.apply(a.first()), Second.getF.apply(a.second())),
                 v -> a -> Pairs.of(First.set(v.first(), a.first()), Second.set(v.second(), a.second())));
@@ -33,20 +35,24 @@ public class LensExtensions {
 
     /**
      * Triple two lenses
-     * */
-    public static <A, B, C, D, E, F> Lens<Triple<A, B, C>, Triple<D, E, F>> triple(Lens<A, D> First, Lens<B, E> Second, Lens<C, F> Third) {
+     */
+    public static <A, B, C, D, E, F> Lens<Triple<A, B, C>, Triple<D, E, F>> triple(final Lens<A, D> First,
+                                                                                   final Lens<B, E> Second,
+                                                                                   final Lens<C, F> Third) {
         return of(
                 a -> Triples.of(First.getF.apply(a.first()), Second.getF.apply(a.second()), Third.getF.apply(a.third())),
                 v -> a -> Triples.of(First.set(v.first(), a.first()), Second.set(v.second(), a.second()), Third.set(v.third(), a.third())));
     }
 
     /**
-    * Applies {@code pred} to the source.
-    * If {@code true}, {@code Then} is selected.
-    * If {@code false}, {@code Else} is selected.
-    */
-    public static <A, B> Lens<A, B> cond(Function<A, Boolean> pred, Lens<A, B> Then, Lens<A, B> Else) {
-        Function<A, Lens<A, B>> choose = a -> pred.apply(a) ? Then : Else;
+     * Applies {@code pred} to the source.
+     * If {@code true}, {@code Then} is selected.
+     * If {@code false}, {@code Else} is selected.
+     */
+    public static <A, B> Lens<A, B> cond(final Function<A, Boolean> pred,
+                                         final Lens<A, B> Then,
+                                         final Lens<A, B> Else) {
+        final Function<A, Lens<A, B>> choose = a -> pred.apply(a) ? Then : Else;
 
         return of(
                 a -> choose.apply(a).getF.apply(a),
@@ -54,8 +60,8 @@ public class LensExtensions {
     }
 
     /**
-    * Gets/sets the fst element in a pair
-    */
+     * Gets/sets the fst element in a pair
+     */
     public static <A, B> Lens<Pair<A, B>, A> firstFromPair() {
         return of(
                 Pair::first,
@@ -140,46 +146,47 @@ public class LensExtensions {
     /**
      * Creates a lens that maps the given lens in a list
      */
-    public static <A, B> Lens<List<A>, List<B>> enumMap(Lens<A, B> la) {
+    public static <A, B> Lens<List<A>, List<B>> enumMap(final Lens<A, B> la) {
         return of(
                 lst -> lst.stream().map(la.getF).collect(Collectors.toList()),
-                v -> lst -> ListExtensions.zip(lst.stream(), v.stream(), (a, b) -> la.set(b, a)).collect(Collectors.toList()));
+                v -> lst -> ListExtensions.zip(lst.stream(), v.stream(), (a, b) -> la.set(b, a))
+                        .collect(Collectors.toList()));
     }
 
     /// <summary>
     /// Convert a Lens<A,B> to a Prism<A,B>
     /// </summary>
-    public static <A, B> Prism<A, B> toPrism(Lens<A, B> la) {
+    public static <A, B> Prism<A, B> toPrism(final Lens<A, B> la) {
         return Prism.of(la);
     }
 
     /// <summary>
     /// Convert a Lens<A, Option<B>> to a Prism<A,B>
     /// </summary>
-    public static <A, B> Prism<A, B> mToPrism(Lens<A, Maybe<B>> la) {
+    public static <A, B> Prism<A, B> mToPrism(final Lens<A, Maybe<B>> la) {
         return Prism.mof(la);
     }
 
     private static class ListExtensions {
         // zip 2 streams
-        public static <A, B, C> Stream<C> zip(Stream<? extends A> a,
-                                              Stream<? extends B> b,
-                                              BiFunction<? super A, ? super B, ? extends C> zipper) {
+        public static <A, B, C> Stream<C> zip(final Stream<? extends A> a,
+                                              final Stream<? extends B> b,
+                                              final BiFunction<? super A, ? super B, ? extends C> zipper) {
             Objects.requireNonNull(zipper);
-            Spliterator<? extends A> aSpliterator = Objects.requireNonNull(a).spliterator();
-            Spliterator<? extends B> bSpliterator = Objects.requireNonNull(b).spliterator();
+            final Spliterator<? extends A> aSpliterator = Objects.requireNonNull(a).spliterator();
+            final Spliterator<? extends B> bSpliterator = Objects.requireNonNull(b).spliterator();
 
             // Zipping looses DISTINCT and SORTED characteristics
-            int characteristics = aSpliterator.characteristics() & bSpliterator.characteristics() &
+            final int characteristics = aSpliterator.characteristics() & bSpliterator.characteristics() &
                     ~(Spliterator.DISTINCT | Spliterator.SORTED);
 
-            long zipSize = ((characteristics & Spliterator.SIZED) != 0)
+            final long zipSize = ((characteristics & Spliterator.SIZED) != 0)
                     ? Math.min(aSpliterator.getExactSizeIfKnown(), bSpliterator.getExactSizeIfKnown())
                     : -1;
 
-            Iterator<A> aIterator = Spliterators.iterator(aSpliterator);
-            Iterator<B> bIterator = Spliterators.iterator(bSpliterator);
-            Iterator<C> cIterator = new Iterator<>() {
+            final Iterator<A> aIterator = Spliterators.iterator(aSpliterator);
+            final Iterator<B> bIterator = Spliterators.iterator(bSpliterator);
+            final Iterator<C> cIterator = new Iterator<>() {
                 @Override
                 public boolean hasNext() {
                     return aIterator.hasNext() && bIterator.hasNext();
@@ -191,7 +198,7 @@ public class LensExtensions {
                 }
             };
 
-            Spliterator<C> split = Spliterators.spliterator(cIterator, zipSize, characteristics);
+            final Spliterator<C> split = Spliterators.spliterator(cIterator, zipSize, characteristics);
             return (a.isParallel() || b.isParallel())
                     ? StreamSupport.stream(split, true)
                     : StreamSupport.stream(split, false);

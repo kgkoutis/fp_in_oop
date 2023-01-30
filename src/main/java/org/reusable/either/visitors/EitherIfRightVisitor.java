@@ -6,20 +6,20 @@ import org.reusable.either.Right;
 
 import java.util.function.Function;
 
-public class EitherIfRightVisitor<L,R> implements EitherVisitor<L,R, Unit> {
+public final class EitherIfRightVisitor<L, R> implements EitherVisitor<L, R, Unit> {
     private final Function<R, Unit> f;
 
-    public EitherIfRightVisitor(Function<R, Unit> f) {
+    public EitherIfRightVisitor(final Function<R, Unit> f) {
         this.f = f;
     }
 
     @Override
-    public Unit visit(Left<L,R> left) {
+    public Unit visit(final Left<L, R> left) {
         return Unit.get();
     }
 
     @Override
-    public Unit visit(Right<L,R> right) {
+    public Unit visit(final Right<L, R> right) {
         return f.apply(right.getValue());
     }
 }

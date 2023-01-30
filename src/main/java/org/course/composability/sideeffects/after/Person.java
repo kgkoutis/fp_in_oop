@@ -6,7 +6,7 @@ import java.util.UUID;
 public class Person {
     private final UUID id;
     private final int age;
-    public Person(UUID uuid, int age) {
+    public Person(final UUID uuid, final int age) {
         this.id = uuid;
         this.age = age;
     }
@@ -28,10 +28,10 @@ public class Person {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
+        final Person person = (Person) o;
         return age == person.age && Objects.equals(id, person.id);
     }
 

@@ -17,9 +17,9 @@ import org.reusable.Unit;
  * Java doesn't allow _ to be used as a variable name so we use _1 instead.
  * */
 public class Main {
-    public static void main(String[] args) {
-        A a = new A();
-        Unit unit = Unit.get();
-        Unit _1 = a.compose(unit);
+    public static void main(final String[] args) {
+        final A a = new A();
+        final Unit unit = Unit.get();
+        final Unit _1 = a.compose(unit);
     }
 }

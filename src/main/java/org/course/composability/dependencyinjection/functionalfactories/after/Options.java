@@ -5,7 +5,9 @@ public final class Options {
     private final int maxLinesOutput;
     private final String outputFileName;
 
-    public Options(boolean isVerbose, int maxLinesOutput, String outputFileName) {
+    public Options(final boolean isVerbose,
+                   final int maxLinesOutput,
+                   final String outputFileName) {
         this.isVerbose = isVerbose;
         this.maxLinesOutput = maxLinesOutput;
         this.outputFileName = outputFileName;

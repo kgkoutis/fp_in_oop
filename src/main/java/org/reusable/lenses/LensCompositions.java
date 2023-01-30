@@ -7,7 +7,8 @@ public class LensCompositions {
     /**
      * Sequentially composes two lenses
      */
-    public static <A, B, C> Lens<A, C> lens(Lens<A, B> la, Lens<B, C> lb) {
+    public static <A, B, C> Lens<A, C> lens(final Lens<A, B> la,
+                                            final Lens<B, C> lb) {
         return of(
                 a -> lb.getF.apply(la.getF.apply(a)),
                 v -> la.update(lb.setF.apply(v)));
@@ -16,7 +17,9 @@ public class LensCompositions {
     /**
      * Sequentially composes three lenses
      */
-    public static <A, B, C, D> Lens<A, D> lens(Lens<A, B> la, Lens<B, C> lb, Lens<C, D> lc) {
+    public static <A, B, C, D> Lens<A, D> lens(final Lens<A, B> la,
+                                               final Lens<B, C> lb,
+                                               final Lens<C, D> lc) {
         return of(
                 a -> lc.getF.apply(lb.getF.apply(la.getF.apply(a))),
                 v -> la.update(lb.update(lc.setF.apply(v))));
@@ -26,19 +29,23 @@ public class LensCompositions {
      * Sequentially composes four lenses
      */
     public static <A, B, C, D, E> Lens<A, E> lens(
-            Lens<A, B> la, Lens<B, C> lb,
-            Lens<C, D> lc, Lens<D, E> ld) {
+            final Lens<A, B> la,
+            final Lens<B, C> lb,
+            final Lens<C, D> lc,
+            final Lens<D, E> ld) {
         return of(a -> ld.getF.apply(lc.getF.apply(lb.getF.apply(la.getF.apply(a)))),
-                v -> la.update(lb.update(lc.update(ld.setF.apply(v)))));
+                  v -> la.update(lb.update(lc.update(ld.setF.apply(v)))));
     }
 
     /**
      * Sequentially composes five lenses
      */
     public static <A, B, C, D, E, F> Lens<A, F> lens(
-            Lens<A, B> la, Lens<B, C> lb,
-            Lens<C, D> lc, Lens<D, E> ld,
-            Lens<E, F> le) {
+            final Lens<A, B> la,
+            final Lens<B, C> lb,
+            final Lens<C, D> lc,
+            final Lens<D, E> ld,
+            final Lens<E, F> le) {
         return
                 of(
                         a -> le.getF.apply(ld.getF.apply(lc.getF.apply(lb.getF.apply(la.getF.apply(a))))),
@@ -49,9 +56,12 @@ public class LensCompositions {
      * Sequentially composes six lenses
      */
     public static <A, B, C, D, E, F, G> Lens<A, G> lens(
-            Lens<A, B> la, Lens<B, C> lb,
-            Lens<C, D> lc, Lens<D, E> ld,
-            Lens<E, F> le, Lens<F, G> lf) {
+            final Lens<A, B> la,
+            final Lens<B, C> lb,
+            final Lens<C, D> lc,
+            final Lens<D, E> ld,
+            final Lens<E, F> le,
+            final Lens<F, G> lf) {
         return
                 of(
                         a -> lf.getF.apply(le.getF.apply(ld.getF.apply(lc.getF.apply(lb.getF.apply(la.getF.apply(a)))))),
@@ -62,10 +72,13 @@ public class LensCompositions {
      * Sequentially composes seven lenses
      */
     public static <A, B, C, D, E, F, G, H> Lens<A, H> lens(
-            Lens<A, B> la, Lens<B, C> lb,
-            Lens<C, D> lc, Lens<D, E> ld,
-            Lens<E, F> le, Lens<F, G> lf,
-            Lens<G, H> lg) {
+            final Lens<A, B> la,
+            final Lens<B, C> lb,
+            final Lens<C, D> lc,
+            final Lens<D, E> ld,
+            final Lens<E, F> le,
+            final Lens<F, G> lf,
+            final Lens<G, H> lg) {
         return
                 of(
                         a -> lg.getF.apply(lf.getF.apply(le.getF.apply(ld.getF.apply(lc.getF.apply(lb.getF.apply(la.getF.apply(a))))))),
@@ -76,10 +89,14 @@ public class LensCompositions {
      * Sequentially composes eight lenses
      */
     public static <A, B, C, D, E, F, G, H, I> Lens<A, I> lens(
-            Lens<A, B> la, Lens<B, C> lb,
-            Lens<C, D> lc, Lens<D, E> ld,
-            Lens<E, F> le, Lens<F, G> lf,
-            Lens<G, H> lg, Lens<H, I> lh) {
+            final Lens<A, B> la,
+            final Lens<B, C> lb,
+            final Lens<C, D> lc,
+            final Lens<D, E> ld,
+            final Lens<E, F> le,
+            final Lens<F, G> lf,
+            final Lens<G, H> lg,
+            final Lens<H, I> lh) {
         return
                 of(
                         a -> lh.getF.apply(lg.getF.apply(lf.getF.apply(le.getF.apply(ld.getF.apply(lc.getF.apply(lb.getF.apply(la.getF.apply(a)))))))),
@@ -90,11 +107,15 @@ public class LensCompositions {
      * Sequentially composes nine lenses
      */
     public static <A, B, C, D, E, F, G, H, I, J> Lens<A, J> lens(
-            Lens<A, B> la, Lens<B, C> lb,
-            Lens<C, D> lc, Lens<D, E> ld,
-            Lens<E, F> le, Lens<F, G> lf,
-            Lens<G, H> lg, Lens<H, I> lh,
-            Lens<I, J> li) {
+            final Lens<A, B> la,
+            final Lens<B, C> lb,
+            final Lens<C, D> lc,
+            final Lens<D, E> ld,
+            final Lens<E, F> le,
+            final Lens<F, G> lf,
+            final Lens<G, H> lg,
+            final Lens<H, I> lh,
+            final Lens<I, J> li) {
         return
                 of(
                         a -> li.getF.apply(lh.getF.apply(lg.getF.apply(lf.getF.apply(le.getF.apply(ld.getF.apply(lc.getF.apply(lb.getF.apply(la.getF.apply(a))))))))),
@@ -105,11 +126,16 @@ public class LensCompositions {
      * Sequentially composes ten lenses
      */
     public static <A, B, C, D, E, F, G, H, I, J, K> Lens<A, K> lens(
-            Lens<A, B> la, Lens<B, C> lb,
-            Lens<C, D> lc, Lens<D, E> ld,
-            Lens<E, F> le, Lens<F, G> lf,
-            Lens<G, H> lg, Lens<H, I> lh,
-            Lens<I, J> li, Lens<J, K> lj) {
+            final Lens<A, B> la,
+            final Lens<B, C> lb,
+            final Lens<C, D> lc,
+            final Lens<D, E> ld,
+            final Lens<E, F> le,
+            final Lens<F, G> lf,
+            final Lens<G, H> lg,
+            final Lens<H, I> lh,
+            final Lens<I, J> li,
+            final Lens<J, K> lj) {
         return
                 of(
                         a -> lj.getF.apply(li.getF.apply(lh.getF.apply(lg.getF.apply(lf.getF.apply(le.getF.apply(ld.getF.apply(lc.getF.apply(lb.getF.apply(la.getF.apply(a)))))))))),

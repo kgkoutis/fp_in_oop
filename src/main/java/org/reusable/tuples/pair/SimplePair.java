@@ -1,16 +1,19 @@
 package org.reusable.tuples.pair;
+
 import java.util.Objects;
 
-public class SimplePair<T, V> implements Pair<T,V> {
-    protected final T first;
-    protected final V second;
+public final class SimplePair<T, V> implements Pair<T, V> {
+    private final T first;
+    private final V second;
 
-    private SimplePair(T first, V second) {
+    private SimplePair(final T first,
+                       final V second) {
         this.first = first;
         this.second = second;
     }
 
-    public static <T, V> SimplePair<T, V> of(T first, V second) {
+    public static <T, V> SimplePair<T, V> of(final T first,
+                                             final V second) {
         return new SimplePair<>(first, second);
     }
 
@@ -23,10 +26,10 @@ public class SimplePair<T, V> implements Pair<T,V> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SimplePair<?, ?> pair = (SimplePair<?, ?>) o;
+        final SimplePair<?, ?> pair = (SimplePair<?, ?>) o;
         return Objects.equals(first, pair.first) && Objects.equals(second, pair.second);
     }
 

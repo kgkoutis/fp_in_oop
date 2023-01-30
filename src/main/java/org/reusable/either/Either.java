@@ -7,19 +7,20 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public abstract class Either<L, R> {
-    public abstract <T> T accept(EitherVisitor<L, R, T> visitor);
-    public static <L, R> Either<L, R> left(L value) {
+    public abstract <T> T accept(final EitherVisitor<L, R, T> visitor);
+
+    public static <L, R> Either<L, R> left(final L value) {
         return new Left<>(value);
     }
 
-    public static <L, R> Either<L, R> right(R value) {
+    public static <L, R> Either<L, R> right(final R value) {
         return new Right<>(value);
     }
 
     //------ extend with visitors ------------
 
     public boolean isLeft() {
-        EitherIsLeftVisitor<L, R> visitor = new EitherIsLeftVisitor<>();
+        final EitherIsLeftVisitor<L, R> visitor = new EitherIsLeftVisitor<>();
         return this.accept(visitor);
     }
 
@@ -27,72 +28,75 @@ public abstract class Either<L, R> {
         return !this.isLeft();
     }
 
-    public <V> Either<L,V> map(Function<R,V> forRight) {
-        EitherMapVisitor<L, R, V> visitor = new EitherMapVisitor<>(forRight);
+    public <V> Either<L, V> map(final Function<R, V> forRight) {
+        final EitherMapVisitor<L, R, V> visitor = new EitherMapVisitor<>(forRight);
         return this.accept(visitor);
     }
 
-    public <V> Either<L,V> mapRight(Function<R,V> forRight) {
+    public <V> Either<L, V> mapRight(final Function<R, V> forRight) {
         return this.map(forRight);
     }
 
-    public <V> Either<V,R> mapLeft(Function<L,V> forLeft) {
-        EitherMapLeftVisitor<L, R, V> visitor = new EitherMapLeftVisitor<>(forLeft);
+    public <V> Either<V, R> mapLeft(final Function<L, V> forLeft) {
+        final EitherMapLeftVisitor<L, R, V> visitor = new EitherMapLeftVisitor<>(forLeft);
         return this.accept(visitor);
     }
 
-    public <V> Either<L, V> bind(Function<R, Either<L, V>> forRight) {
-        EitherBindVisitor<L, R, V> visitor = new EitherBindVisitor<>(forRight);
+    public <V> Either<L, V> bind(final Function<R, Either<L, V>> forRight) {
+        final EitherBindVisitor<L, R, V> visitor = new EitherBindVisitor<>(forRight);
         return this.accept(visitor);
     }
 
-    public <V> Either<L, V> bindRight(Function<R, Either<L, V>> forRight) {
+    public <V> Either<L, V> bindRight(final Function<R, Either<L, V>> forRight) {
         return this.bind(forRight);
     }
 
-    public <V> Either<V, R> bindLeft(Function<L, Either<V, R>> forLeft) {
-        EitherBindLeftVisitor<L, R, V> visitor = new EitherBindLeftVisitor<>(forLeft);
+    public <V> Either<V, R> bindLeft(final Function<L, Either<V, R>> forLeft) {
+        final EitherBindLeftVisitor<L, R, V> visitor = new EitherBindLeftVisitor<>(forLeft);
         return this.accept(visitor);
     }
 
-    public <V,U> Either<V, U> biMap(Function<L, V> forLeft, Function<R, U> forRight) {
-        EitherBiMapVisitor<L, R, V, U> visitor = new EitherBiMapVisitor<>(forLeft, forRight);
+    public <V, U> Either<V, U> biMap(final Function<L, V> forLeft,
+                                     final Function<R, U> forRight) {
+        final EitherBiMapVisitor<L, R, V, U> visitor = new EitherBiMapVisitor<>(forLeft, forRight);
         return this.accept(visitor);
     }
 
-    public <V,U> Either<V, U> biBind(Function<L, Either<V, U>> forLeft, Function<R, Either<V, U>> forRight) {
-        EitherBiBindVisitor<L, R, V, U> visitor = new EitherBiBindVisitor<>(forLeft, forRight);
+    public <V, U> Either<V, U> biBind(final Function<L, Either<V, U>> forLeft,
+                                      final Function<R, Either<V, U>> forRight) {
+        final EitherBiBindVisitor<L, R, V, U> visitor = new EitherBiBindVisitor<>(forLeft, forRight);
         return this.accept(visitor);
     }
 
-    public Unit ifRight(Consumer<? super R> forRight) {
-        Function<R, Unit> applier = r -> {
+    public Unit ifRight(final Consumer<? super R> forRight) {
+        final Function<R, Unit> applier = r -> {
             forRight.accept(r);
             return Unit.get();
         };
-        EitherIfRightVisitor<L,R> visitor = new EitherIfRightVisitor<>(applier);
+        final EitherIfRightVisitor<L, R> visitor = new EitherIfRightVisitor<>(applier);
         return this.accept(visitor);
     }
 
-    public Unit ifLeft(Consumer<? super L> forLeft) {
-        Function<L, Unit> applier = l -> {
+    public Unit ifLeft(final Consumer<? super L> forLeft) {
+        final Function<L, Unit> applier = l -> {
             forLeft.accept(l);
             return Unit.get();
         };
-        EitherIfLeftVisitor<L,R> visitor = new EitherIfLeftVisitor<>(applier);
+        final EitherIfLeftVisitor<L, R> visitor = new EitherIfLeftVisitor<>(applier);
         return this.accept(visitor);
     }
 
-    public Unit handle(Consumer<? super L> forLeft, Consumer<? super R> forRight) {
-        Function<L, Unit> applierLeft = l -> {
+    public Unit handle(final Consumer<? super L> forLeft,
+                       final Consumer<? super R> forRight) {
+        final Function<L, Unit> applierLeft = l -> {
             forLeft.accept(l);
             return Unit.get();
         };
-        Function<R, Unit> applierRight = r -> {
+        final Function<R, Unit> applierRight = r -> {
             forRight.accept(r);
             return Unit.get();
         };
-        EitherIfLeftRightVisitor<L,R> visitor = new EitherIfLeftRightVisitor<>(applierLeft, applierRight);
+        final EitherIfLeftRightVisitor<L, R> visitor = new EitherIfLeftRightVisitor<>(applierLeft, applierRight);
         return this.accept(visitor);
     }
 }

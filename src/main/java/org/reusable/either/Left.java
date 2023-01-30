@@ -2,10 +2,10 @@ package org.reusable.either;
 
 import org.reusable.either.visitors.EitherVisitor;
 
-public class Left<L, R> extends Either<L, R> {
+public final class Left<L, R> extends Either<L, R> {
     private final L value;
 
-    public Left(L value) {
+    public Left(final L value) {
         if (value == null) {
             throw new IllegalArgumentException("Left value cannot be null");
         }
@@ -17,7 +17,7 @@ public class Left<L, R> extends Either<L, R> {
     }
 
     @Override
-    public <T> T accept(EitherVisitor<L, R, T> visitor) {
+    public <T> T accept(final EitherVisitor<L, R, T> visitor) {
         return visitor.visit(this);
     }
 

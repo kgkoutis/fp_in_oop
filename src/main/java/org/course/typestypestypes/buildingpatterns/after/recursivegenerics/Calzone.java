@@ -1,6 +1,6 @@
 package org.course.typestypestypes.buildingpatterns.after.recursivegenerics;
 
-final public class Calzone extends Pizza {
+public final class Calzone extends Pizza {
     private final boolean sauceInside;
 
     public static class Builder extends Pizza.Builder<Builder> {
@@ -22,7 +22,7 @@ final public class Calzone extends Pizza {
         }
     }
 
-    private Calzone(Builder builder) {
+    private Calzone(final Builder builder) {
         super(builder);
         sauceInside = builder.sauceInside;
     }

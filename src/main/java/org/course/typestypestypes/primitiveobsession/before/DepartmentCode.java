@@ -3,7 +3,7 @@ package org.course.typestypestypes.primitiveobsession.before;
 public class DepartmentCode {
     private final String code;
 
-    public DepartmentCode(String code) {
+    public DepartmentCode(final String code) {
         this.code = code;
     }
 

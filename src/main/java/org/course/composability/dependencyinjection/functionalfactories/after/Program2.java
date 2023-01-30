@@ -1,7 +1,7 @@
 package org.course.composability.dependencyinjection.functionalfactories.after;
 
 // Why would that class be not testable? Think.
-public class Program2 {
+public final class Program2 {
     private final Options options;
 
     public Program2() {

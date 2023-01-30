@@ -7,33 +7,33 @@ package org.course.functionalstyle.extendingtypes.before;
  */
 
 public class Main {
-    public static void main(String[] args) {
-        Wind w = new Wind(1);
+    public static void main(final String[] args) {
+        final Wind w = new Wind(1);
         printSpeed(w);
         printSpeed2(w);
         printSpeed3(w);
     }
 
-    private static void printSpeed(Wind wind) {
+    private static void printSpeed(final Wind wind) {
         needWind(wind);
-        double kmsPerhr = WindHelper.getSpeedInKilometersPerHour(wind); // don't forget this!
+        final double kmsPerhr = WindHelper.getSpeedInKilometersPerHour(wind); // don't forget this!
         System.out.println("Speed in kilometers Per Hour: " + kmsPerhr);
     }
 
-    private static void printSpeed2(Wind wind) {
+    private static void printSpeed2(final Wind wind) {
         needWind(wind);
-        double kmsPerhr = WindHelper.getSpeedInKilometersPerHour(wind); // don't forget this!
+        final double kmsPerhr = WindHelper.getSpeedInKilometersPerHour(wind); // don't forget this!
         System.out.println("Speed in kilometers Per Hour: " + kmsPerhr);
     }
 
-    private static void printSpeed3(Wind wind) {
+    private static void printSpeed3(final Wind wind) {
         needWind(wind);
-        double kmsPerhr = WindHelper.getSpeedInKilometersPerHour(wind); // don't forget this!
+        final double kmsPerhr = WindHelper.getSpeedInKilometersPerHour(wind); // don't forget this!
         System.out.println("Speed in kilometers Per Hour: " + kmsPerhr);
     }
 
 
-    private static void needWind(Wind w) {
+    private static void needWind(final Wind w) {
         //.... logic with wind...//
         /* no operation */
     }

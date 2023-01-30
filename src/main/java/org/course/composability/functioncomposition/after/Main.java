@@ -12,9 +12,9 @@ import java.util.function.Function;
  * <p>
  * The benefit of using function composition is that split our code into smaller pieces and we can compose them in bigger functions
  * without having to worry about the implementation details of the smaller functions. Kind of like Lego blocks.
- * */
+ */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final String initialInput = "Hello World!";
 
         final Function<String, Integer> countWords = x -> countArray(splitStringInWords(x));
@@ -29,7 +29,7 @@ public class Main {
         // final Function<String, Integer> countWords2 = first.andThen(second);
     }
 
-    private static String[] splitStringInWords(String str) {
+    private static String[] splitStringInWords(final String str) {
         final String[] parts = str.split("\\s+"); // split by one or more spaces
 
         for (int i = 0; i < parts.length; i++) {
@@ -39,7 +39,7 @@ public class Main {
         return parts;
     }
 
-    private static int countArray(String[] parts) {
+    private static int countArray(final String[] parts) {
         return parts.length;
     }
 }

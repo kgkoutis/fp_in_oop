@@ -9,29 +9,33 @@ public final class Lens<A, B> {
     public final Function<A, B> getF;
     public final Function<B, Function<A, A>> setF;
 
-    private Lens(Function<A, B> get, Function<B, Function<A, A>> set) {
+    private Lens(final Function<A, B> get,
+                 final Function<B, Function<A, A>> set) {
         this.getF = get;
         this.setF = set;
     }
 
-    public B get(A value) {
+    public B get(final A value) {
         return getF.apply(value);
     }
 
-    public A set(B value, A cont) {
+    public A set(final B value,
+                 final A cont) {
         return setF.apply(value).apply(cont);
     }
 
-    public static <A, B> Lens<A, B> of(Function<A, B> Get, Function<B, Function<A, A>> Set) {
+    public static <A, B> Lens<A, B> of(final Function<A, B> Get,
+                                       final Function<B, Function<A, A>> Set) {
         return new Lens<>(Get, Set);
     }
 
-    public Function<A, A> update(Function<B, B> f) {
-        var self = this;
+    public Function<A, A> update(final Function<B, B> f) {
+        final var self = this;
         return a -> self.set(f.apply(self.getF.apply(a)), a);
     }
 
-    public A update(Function<B, B> f, A value) {
+    public A update(final Function<B, B> f,
+                    final A value) {
         return set(f.apply(getF.apply(value)), value);
     }
 }

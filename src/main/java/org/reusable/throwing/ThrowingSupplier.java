@@ -10,12 +10,12 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
     default T get() {
         try {
             return getThrows();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    static <T> Supplier<T> uncheck(ThrowingSupplier<T> fn) {
+    static <T> Supplier<T> uncheck(final ThrowingSupplier<T> fn) {
         return fn::get;
     }
 }

@@ -12,12 +12,12 @@ public class PersonsRepository {
         database.createPersonsTableIfAbsent();
     }
 
-    public void insertPersons(List<Person> persons) {
+    public void insertPersons(final List<Person> persons) {
         database.truncatePersonsTable();
         database.insertPersons(persons);
     }
 
-    public Optional<Person> getPerson(UUID id) {
+    public Optional<Person> getPerson(final UUID id) {
         if (database.personByIdExists(id)) {
             return Optional.of(database.findPersonById(id));
         }

@@ -3,7 +3,7 @@ package org.course.typestypestypes.primitiveobsession.before.Helpers;
 import org.course.typestypestypes.primitiveobsession.before.Location;
 
 public class LocationPicker {
-    public Location getLocation(String departmentCode) {
+    public Location getLocation(final String departmentCode) {
         // TODO: validate departmentCode
         switch (departmentCode.charAt(0)) {
             case '1':

@@ -3,31 +3,40 @@ package org.reusable.tuples.pair;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class ComparablePair<T extends Comparable<T>, V extends Comparable<V>> implements Pair<T,V>, Comparable<ComparablePair<T, V>> {
+public final class ComparablePair<T extends Comparable<T>, V extends Comparable<V>> implements Pair<T, V>, Comparable<ComparablePair<T, V>> {
     private final Comparator<T> firstComparator;
     private final Comparator<V> secondComparator;
-    private final SimplePair<T,V> origin;
+    private final SimplePair<T, V> origin;
 
-    private ComparablePair(T first, V second, Comparator<T> firstComparator, Comparator<V> secondComparator) {
+    private ComparablePair(final T first,
+                           final V second,
+                           final Comparator<T> firstComparator,
+                           final Comparator<V> secondComparator) {
         this.origin = SimplePair.of(first, second);
         this.firstComparator = firstComparator;
         this.secondComparator = secondComparator;
     }
 
-    public static <T extends Comparable<T>, V extends Comparable<V>> ComparablePair<T, V> of(T first, V second) {
+    public static <T extends Comparable<T>, V extends Comparable<V>> ComparablePair<T, V> of(final T first,
+                                                                                             final V second) {
         return new ComparablePair<>(first, second, Comparator.naturalOrder(), Comparator.naturalOrder());
     }
 
-    public static <T extends Comparable<T>, V extends Comparable<V>> ComparablePair<T, V> of(T first, V second, Comparator<T> firstComparator, Comparator<V> secondComparator) {
+    public static <T extends Comparable<T>, V extends Comparable<V>> ComparablePair<T, V> of(final T first,
+                                                                                             final V second,
+                                                                                             final Comparator<T> firstComparator,
+                                                                                             final Comparator<V> secondComparator) {
         return new ComparablePair<>(first, second, firstComparator, secondComparator);
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ComparablePair<?, ?> that = (ComparablePair<?, ?>) o;
-        return Objects.equals(firstComparator, that.firstComparator) && Objects.equals(secondComparator, that.secondComparator) && Objects.equals(origin, that.origin);
+        final ComparablePair<?, ?> that = (ComparablePair<?, ?>) o;
+        return Objects.equals(firstComparator, that.firstComparator) &&
+                Objects.equals(secondComparator, that.secondComparator) &&
+                Objects.equals(origin, that.origin);
     }
 
     @Override
@@ -46,8 +55,8 @@ public class ComparablePair<T extends Comparable<T>, V extends Comparable<V>> im
     }
 
     @Override
-    public int compareTo(ComparablePair<T, V> o) {
-        int firstCompare = firstComparator.compare(origin.first(), o.origin.first());
+    public int compareTo(final ComparablePair<T, V> o) {
+        final int firstCompare = firstComparator.compare(origin.first(), o.origin.first());
         if (firstCompare != 0) {
             return firstCompare;
         }

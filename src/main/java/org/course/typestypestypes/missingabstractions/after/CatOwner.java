@@ -1,4 +1,4 @@
 package org.course.typestypestypes.missingabstractions.after;
 
-final public class CatOwner extends PetOwner {
+public final class CatOwner extends PetOwner {
 }

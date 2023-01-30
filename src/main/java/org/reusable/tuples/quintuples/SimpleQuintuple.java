@@ -2,14 +2,18 @@ package org.reusable.tuples.quintuples;
 
 import java.util.Objects;
 
-public class SimpleQuintuple<T, U, V, W, X> implements Quintuple<T, U, V, W, X> {
+public final class SimpleQuintuple<T, U, V, W, X> implements Quintuple<T, U, V, W, X> {
     private final T first;
     private final U second;
     private final V third;
     private final W fourth;
     private final X fifth;
 
-    private SimpleQuintuple(T first, U second, V third, W fourth, X fifth) {
+    private SimpleQuintuple(final T first,
+                            final U second,
+                            final V third,
+                            final W fourth,
+                            final X fifth) {
         this.first = first;
         this.second = second;
         this.third = third;
@@ -37,16 +41,24 @@ public class SimpleQuintuple<T, U, V, W, X> implements Quintuple<T, U, V, W, X> 
         return fifth;
     }
 
-    public static <T, U, V, W, X> SimpleQuintuple<T, U, V, W, X> of(T first, U second, V third, W fourth, X fifth) {
+    public static <T, U, V, W, X> SimpleQuintuple<T, U, V, W, X> of(final T first,
+                                                                    final U second,
+                                                                    final V third,
+                                                                    final W fourth,
+                                                                    final X fifth) {
         return new SimpleQuintuple<>(first, second, third, fourth, fifth);
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SimpleQuintuple<?, ?, ?, ?, ?> that = (SimpleQuintuple<?, ?, ?, ?, ?>) o;
-        return Objects.equals(first, that.first) && Objects.equals(second, that.second) && Objects.equals(third, that.third) && Objects.equals(fourth, that.fourth) && Objects.equals(fifth, that.fifth);
+        final SimpleQuintuple<?, ?, ?, ?, ?> that = (SimpleQuintuple<?, ?, ?, ?, ?>) o;
+        return Objects.equals(first, that.first) &&
+                Objects.equals(second, that.second) &&
+                Objects.equals(third, that.third) &&
+                Objects.equals(fourth, that.fourth) &&
+                Objects.equals(fifth, that.fifth);
     }
 
     @Override

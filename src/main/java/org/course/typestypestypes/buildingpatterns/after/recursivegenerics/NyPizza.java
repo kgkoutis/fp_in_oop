@@ -2,14 +2,15 @@ package org.course.typestypestypes.buildingpatterns.after.recursivegenerics;
 
 import java.util.Objects;
 
-final public class NyPizza extends Pizza {
+public final class NyPizza extends Pizza {
     public enum Size {SMALL, MEDIUM, LARGE}
+
     private final Size size;
 
     public static class Builder extends Pizza.Builder<Builder> {
         private final Size size;
 
-        public Builder(Size size) {
+        public Builder(final Size size) {
             this.size = Objects.requireNonNull(size);
         }
 
@@ -24,7 +25,7 @@ final public class NyPizza extends Pizza {
         }
     }
 
-    private NyPizza(Builder builder) {
+    private NyPizza(final Builder builder) {
         super(builder);
         size = builder.size;
     }

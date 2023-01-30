@@ -5,11 +5,11 @@ import java.util.Objects;
 public final class Firstname {
     private final String value;
 
-    public Firstname(String value) {
+    public Firstname(final String value) {
         this.value = value;
     }
 
-    public static Firstname of(String value) {
+    public static Firstname of(final String value) {
         return new Firstname(value);
     }
 
@@ -18,10 +18,10 @@ public final class Firstname {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (Firstname) obj;
+        final var that = (Firstname) obj;
         return Objects.equals(this.value, that.value);
     }
 

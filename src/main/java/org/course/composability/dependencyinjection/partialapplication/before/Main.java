@@ -5,11 +5,11 @@ package org.course.composability.dependencyinjection.partialapplication.before;
  * Basically that fixes the first operand of the add method.
  * Afterwards we can call add method on FixedAdder with the second operand.
  * That will give us the result of the addition, which we print out.
- *
+ * <p>
  * This is a very simple example of partial application. But how do we write it without classes?
- * */
+ */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final Adder adder = new Adder();
         final FixedAdder fiveFixed = adder.addFirst(5);
         final int result = fiveFixed.add(10);

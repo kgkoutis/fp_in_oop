@@ -1,13 +1,13 @@
 package org.course.composability.dependencyinjection.partialapplication.before;
 
-final public class FixedAdder {
+public final class FixedAdder {
     final private int firstOperand;
 
-    public FixedAdder(int firstOperand) {
+    public FixedAdder(final int firstOperand) {
         this.firstOperand = firstOperand;
     }
 
-    public int add(int secondOperand) {
+    public int add(final int secondOperand) {
         return firstOperand + secondOperand;
     }
 }

@@ -8,30 +8,28 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Here we introduced a wrapper class for the exception type and message. That way we can pattern match on the type of the exception on the upstream side.
  * The methods with checked exceptions now return Either<ExceptionTypeAndMessage, T> and didn't need to throw exceptions.
- *
+ * <p>
  * By manipulating the Either type with map, bind and biBind we can reach the Either type to the final handler for the final processing.
  * This all makes the code more honest and easier to reason about.
- * */
+ */
 public class Main {
-    public static void main(String[] args) {
-        URI urlThatMightFail = URI.create("https://doesntmatter.com");
+    public static void main(final String[] args) {
+        final URI urlThatMightFail = URI.create("https://doesntmatter.com");
 
         for (int i = 0; i < 40; i++) {
-            Either<ExceptionTypeAndMessage, Double> either = scaryHttpCall(urlThatMightFail);
+            final Either<ExceptionTypeAndMessage, Double> either = scaryHttpCall(urlThatMightFail);
 
             either.handle(
-                    (ExceptionTypeAndMessage exceptionTypeAndMessage) -> {
-                        Class<?> exceptionType = (Class<?>) exceptionTypeAndMessage.getExceptionType();
+                    (final ExceptionTypeAndMessage exceptionTypeAndMessage) -> {
+                        final Class<?> exceptionType = (Class<?>) exceptionTypeAndMessage.getExceptionType();
 
                         if (exceptionType == DivisionByZeroException.class) {
-                            String s = exceptionTypeAndMessage.getMessage();
+                            final String s = exceptionTypeAndMessage.getMessage();
                             System.out.println("Unhappy path: " + s);
-                        }
-                        else if (exceptionType == ApiCrashedException.class) {
-                            String s = exceptionTypeAndMessage.getMessage();
+                        } else if (exceptionType == ApiCrashedException.class) {
+                            final String s = exceptionTypeAndMessage.getMessage();
                             System.out.println("Unhappy path: " + s);
-                        }
-                        else {
+                        } else {
                             System.out.println("Unknown exception type");
                         }
                     },
@@ -40,18 +38,18 @@ public class Main {
         }
     }
 
-    private static Either<ExceptionTypeAndMessage, Double> scaryHttpCall(URI urlThatMightFail) {
-        Either<ExceptionTypeAndMessage, Integer> x = getPositiveNumberFromInternet(urlThatMightFail);
+    private static Either<ExceptionTypeAndMessage, Double> scaryHttpCall(final URI urlThatMightFail) {
+        final Either<ExceptionTypeAndMessage, Integer> x = getPositiveNumberFromInternet(urlThatMightFail);
 
         return x.biBind(
                 Either::left,
-                (Integer r) -> {
-                    Double d = Double.valueOf(r);
+                (final Integer r) -> {
+                    final Double d = Double.valueOf(r);
                     return scaryDivision(d);
                 });
     }
 
-    private static Either<ExceptionTypeAndMessage, Double> scaryDivision(Double x) {
+    private static Either<ExceptionTypeAndMessage, Double> scaryDivision(final Double x) {
 
         if (x == 0.0)
             return Either.left(ExceptionTypeAndMessage.of(DivisionByZeroException.class, "Division by zero"));
@@ -59,11 +57,11 @@ public class Main {
             return Either.right(20 / x);
     }
 
-    private static Either<ExceptionTypeAndMessage, Integer> getPositiveNumberFromInternet(URI url) {
+    private static Either<ExceptionTypeAndMessage, Integer> getPositiveNumberFromInternet(final URI url) {
         // call api to get a number...
-        int min = 0;
-        int max = 10;
-        int rnd = ThreadLocalRandom.current().nextInt(min, max + 1);
+        final int min = 0;
+        final int max = 10;
+        final int rnd = ThreadLocalRandom.current().nextInt(min, max + 1);
 
         // api is broken when it is about to return 4.0
         if (rnd == 4)

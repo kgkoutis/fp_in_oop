@@ -22,40 +22,40 @@ import java.util.stream.Collectors;
  * (hint: it has to do something with OOP)
  * */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         // dirty part with side effects
-        PersonsRepository personsRepository = new PersonsRepository();
+        final PersonsRepository personsRepository = new PersonsRepository();
 
-        Supplier<List<Person>> createPersons = () -> {
-            Person p1 = new Person(UUID.randomUUID(), 40);
-            Person p2 = new Person(UUID.randomUUID(), 10);
-            Person p3 = new Person(UUID.randomUUID(), 30);
-            Person p4 = new Person(UUID.randomUUID(), 25);
+        final Supplier<List<Person>> createPersons = () -> {
+            final Person p1 = new Person(UUID.randomUUID(), 40);
+            final Person p2 = new Person(UUID.randomUUID(), 10);
+            final Person p3 = new Person(UUID.randomUUID(), 30);
+            final Person p4 = new Person(UUID.randomUUID(), 25);
 
             return List.of(p1, p2, p3, p4);
         };
 
-        Consumer<List<Person>> saveInDB = personsRepository::insertPersons;
+        final Consumer<List<Person>> saveInDB = personsRepository::insertPersons;
 
-        Function<UUID, Optional<Person>> getPersonFromRepository = personsRepository::getPerson;
+        final Function<UUID, Optional<Person>> getPersonFromRepository = personsRepository::getPerson;
 
-        Consumer<String> print = System.out::println;
+        final Consumer<String> print = System.out::println;
 
-        Consumer<String> throwIllegalArgumentException = (s) -> { throw new IllegalArgumentException(s); };
+        final Consumer<String> throwIllegalArgumentException = (s) -> { throw new IllegalArgumentException(s); };
 
         // pure and testable part
         pureAndTestablePart(createPersons, saveInDB, getPersonFromRepository, print, throwIllegalArgumentException);
     }
 
-    private static void pureAndTestablePart(Supplier<List<Person>> createPersons, // this can be a pure function!
-                                            Consumer<List<Person>> saveInStore, // this can be a pure function!
-                                            Function<UUID, Optional<Person>> getPersonFromRepository, // this can be a pure function!
-                                            Consumer<String> print, Consumer<String> throwIllegalArgumentException // this can be a pure function!
+    private static void pureAndTestablePart(final Supplier<List<Person>> createPersons,// this can be a pure function!
+                                            final Consumer<List<Person>> saveInStore,// this can be a pure function!
+                                            final Function<UUID, Optional<Person>> getPersonFromRepository,// this can be a pure function!
+                                            final Consumer<String> print, final Consumer<String> throwIllegalArgumentException// this can be a pure function!
     ) {
-        List<Person> persons = createPersons.get();
+        final List<Person> persons = createPersons.get();
         insertPersonsIntoStore(persons, saveInStore, throwIllegalArgumentException);
-        UUID id = persons.get(0).getId();
-        Optional<Person> personFromDatabase = getPersonFromRepository.apply(id);
+        final UUID id = persons.get(0).getId();
+        final Optional<Person> personFromDatabase = getPersonFromRepository.apply(id);
 
         if (personFromDatabase.isPresent()) {
             print.accept("Person with id: " + id + " was found in the database");
@@ -65,13 +65,13 @@ public class Main {
     }
 
     private static void insertPersonsIntoStore(List<Person> persons,
-                                               Consumer<List<Person>> saveInStore, // this can be a pure function!
-                                               Consumer<String> throwIllegalArgumentException // this can be a pure function!
+                                               final Consumer<List<Person>> saveInStore, // this can be a pure function!
+                                               final Consumer<String> throwIllegalArgumentException // this can be a pure function!
     ) {
-        boolean structurallyGood = persons != null &&
+        final boolean structurallyGood = persons != null &&
                 !persons.isEmpty() &&
                 persons.stream().allMatch(Objects::nonNull);
-        boolean ageAverageIsAbove20 = structurallyGood && persons.stream()
+        final boolean ageAverageIsAbove20 = structurallyGood && persons.stream()
                 .map(Person::getAge)
                 .collect(Collectors.averagingDouble(i -> i)) > 20.0;
 

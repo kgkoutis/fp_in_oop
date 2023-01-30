@@ -1,11 +1,13 @@
 package org.course.typestypestypes.missingabstractions.before;
 
-public class Person {
+public final class Person {
     boolean HasDog;
     boolean HasCat;
     boolean HasParrot;
 
-    public Person(boolean hasDog, boolean hasCat, boolean hasParrot) {
+    public Person(final boolean hasDog,
+                  final boolean hasCat,
+                  final boolean hasParrot) {
         HasDog = hasDog;
         HasCat = hasCat;
         HasParrot = hasParrot;

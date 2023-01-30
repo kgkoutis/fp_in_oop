@@ -9,7 +9,7 @@ import org.reusable.prisms.Prism;
 import static org.reusable.lenses.LensCompositions.lens;
 import static org.reusable.prisms.PrismCompositions.prism;
 
-final public class HeroOptics {
+public final class HeroOptics {
     // Firstname
     private static final Lens<Hero, Firstname> heroFirstnameLens = Lens.of(Hero::firstname, newFirstname -> hero -> new Hero(newFirstname, hero.lastname(), hero.friend()));
     private static final Lens<Firstname, String> firstnameLens = Lens.of(Firstname::getValue, newName -> firstname -> new Firstname(newName));

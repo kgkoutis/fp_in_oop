@@ -1,11 +1,13 @@
 package org.reusable.tuples.triples;
 
-public class SimpleTriple<T, U, V> implements Triple<T, U, V> {
+public final class SimpleTriple<T, U, V> implements Triple<T, U, V> {
     private final T first;
     private final U second;
     private final V third;
 
-    private SimpleTriple(T first, U second, V third) {
+    private SimpleTriple(final T first,
+                         final U second,
+                         final V third) {
         this.first = first;
         this.second = second;
         this.third = third;
@@ -23,7 +25,9 @@ public class SimpleTriple<T, U, V> implements Triple<T, U, V> {
         return third;
     }
 
-    public static <T, U, V> SimpleTriple<T, U, V> of(T first, U second, V third) {
+    public static <T, U, V> SimpleTriple<T, U, V> of(final T first,
+                                                     final U second,
+                                                     final V third) {
         return new SimpleTriple<>(first, second, third);
     }
 }

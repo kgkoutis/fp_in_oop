@@ -6,20 +6,20 @@ import org.reusable.maybe.Nothing;
 
 import java.util.function.Function;
 
-public class MaybeBindVisitor<T, V> implements MaybeVisitor<T, Maybe<V>> {
+public final class MaybeBindVisitor<T, V> implements MaybeVisitor<T, Maybe<V>> {
     private final Function<T, Maybe<V>> bindingFunction;
 
-    public MaybeBindVisitor(Function<T, Maybe<V>> flatMappingFunction) {
+    public MaybeBindVisitor(final Function<T, Maybe<V>> flatMappingFunction) {
         this.bindingFunction = flatMappingFunction;
     }
 
     @Override
-    public Maybe<V> visit(Just<T> just) {
+    public Maybe<V> visit(final Just<T> just) {
         return bindingFunction.apply(just.getValue());
     }
 
     @Override
-    public Maybe<V> visit(Nothing<T> nothing) {
+    public Maybe<V> visit(final Nothing<T> nothing) {
         return new Nothing<>();
     }
 }

@@ -1,7 +1,7 @@
 package org.course.typestypestypes.buildingpatterns.after;
 
 // Using the builder pattern
-final public class NutritionFactsWithBuilder {
+public final class NutritionFactsWithBuilder {
     private final int servingSize;
     private final int servings;
     private final int calories;
@@ -19,27 +19,28 @@ final public class NutritionFactsWithBuilder {
         private int sodium = 0;
         private int carbohydrate = 0;
 
-        public Builder(int servingSize, int servings) {
+        public Builder(final int servingSize,
+                       final int servings) {
             this.servingSize = servingSize;
             this.servings = servings;
         }
 
-        public Builder calories(int val) {
+        public Builder calories(final int val) {
             calories = val;
             return this;
         }
 
-        public Builder fat(int val) {
+        public Builder fat(final int val) {
             fat = val;
             return this;
         }
 
-        public Builder sodium(int val) {
+        public Builder sodium(final int val) {
             sodium = val;
             return this;
         }
 
-        public Builder carbohydrate(int val) {
+        public Builder carbohydrate(final int val) {
             carbohydrate = val;
             return this;
         }
@@ -49,7 +50,7 @@ final public class NutritionFactsWithBuilder {
         }
     }
 
-    private NutritionFactsWithBuilder(Builder builder) {
+    private NutritionFactsWithBuilder(final Builder builder) {
         servingSize = builder.servingSize;
         servings = builder.servings;
         calories = builder.calories;

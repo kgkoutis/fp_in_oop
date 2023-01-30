@@ -2,13 +2,16 @@ package org.reusable.tuples.quadruple;
 
 import java.util.Objects;
 
-public class SimpleQuadruple<T, U, V, W> implements Quadruple<T, U, V, W> {
+public final class SimpleQuadruple<T, U, V, W> implements Quadruple<T, U, V, W> {
     private final T first;
     private final U second;
     private final V third;
     private final W fourth;
 
-    private SimpleQuadruple(T first, U second, V third, W fourth) {
+    private SimpleQuadruple(final T first,
+                            final U second,
+                            final V third,
+                            final W fourth) {
         this.first = first;
         this.second = second;
         this.third = third;
@@ -31,7 +34,10 @@ public class SimpleQuadruple<T, U, V, W> implements Quadruple<T, U, V, W> {
         return fourth;
     }
 
-    public static <T, U, V, W> SimpleQuadruple<T, U, V, W> of(T first, U second, V third, W fourth) {
+    public static <T, U, V, W> SimpleQuadruple<T, U, V, W> of(final T first,
+                                                              final U second,
+                                                              final V third,
+                                                              final W fourth) {
         return new SimpleQuadruple<>(first, second, third, fourth);
     }
 
@@ -41,11 +47,11 @@ public class SimpleQuadruple<T, U, V, W> implements Quadruple<T, U, V, W> {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        SimpleQuadruple<?, ?, ?, ?> other = (SimpleQuadruple<?, ?, ?, ?>) obj;
+        final SimpleQuadruple<?, ?, ?, ?> other = (SimpleQuadruple<?, ?, ?, ?>) obj;
         if (first == null) {
             if (other.first != null) return false;
         } else if (!first.equals(other.first)) return false;
@@ -56,14 +62,13 @@ public class SimpleQuadruple<T, U, V, W> implements Quadruple<T, U, V, W> {
             if (other.third != null) return false;
         } else if (!third.equals(other.third)) return false;
         if (fourth == null) {
-            if (other.fourth != null) return false;
-        } else if (!fourth.equals(other.fourth)) return false;
-        return true;
+            return other.fourth == null;
+        } else return fourth.equals(other.fourth);
     }
 
     @Override
     public int hashCode() {
-       return Objects.hash(first, second, third, fourth);
+        return Objects.hash(first, second, third, fourth);
     }
 }
 

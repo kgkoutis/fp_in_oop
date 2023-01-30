@@ -5,7 +5,7 @@ public interface PetVisitor<T> {
     T visit(Parrot parrot);
     T visit(Cat cat);
 
-    default T visit(Pet pet) {
+    default T visit(final Pet pet) {
         if (pet instanceof Dog) {
             return visit((Dog) pet);
         } else if (pet instanceof Parrot) {

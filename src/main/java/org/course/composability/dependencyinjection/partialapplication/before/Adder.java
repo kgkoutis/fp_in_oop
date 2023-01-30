@@ -1,8 +1,8 @@
 package org.course.composability.dependencyinjection.partialapplication.before;
 
-final public class Adder {
+public final class Adder {
 
-    public FixedAdder addFirst(int i) {
+    public FixedAdder addFirst(final int i) {
         // validation.... other stuff..... etc
         return new FixedAdder(i);
     }

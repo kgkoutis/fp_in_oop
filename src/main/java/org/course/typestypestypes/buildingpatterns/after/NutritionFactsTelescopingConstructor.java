@@ -8,23 +8,38 @@ public class NutritionFactsTelescopingConstructor {
     private final int sodium; // (mg/serving) optional
     private final int carbohydrate; // (g/serving) optional
 
-    public NutritionFactsTelescopingConstructor(int servingSize, int servings) {
+    public NutritionFactsTelescopingConstructor(final int servingSize,
+                                                final int servings) {
         this(servingSize, servings, 0);
     }
 
-    public NutritionFactsTelescopingConstructor(int servingSize, int servings, int calories) {
+    public NutritionFactsTelescopingConstructor(final int servingSize,
+                                                final int servings,
+                                                final int calories) {
         this(servingSize, servings, calories, 0);
     }
 
-    public NutritionFactsTelescopingConstructor(int servingSize, int servings, int calories, int fat) {
+    public NutritionFactsTelescopingConstructor(final int servingSize,
+                                                final int servings,
+                                                final int calories,
+                                                final int fat) {
         this(servingSize, servings, calories, fat, 0);
     }
 
-    public NutritionFactsTelescopingConstructor(int servingSize, int servings, int calories, int fat, int sodium) {
+    public NutritionFactsTelescopingConstructor(final int servingSize,
+                                                final int servings,
+                                                final int calories,
+                                                final int fat,
+                                                final int sodium) {
         this(servingSize, servings, calories, fat, sodium, 0);
     }
 
-    public NutritionFactsTelescopingConstructor(int servingSize, int servings, int calories, int fat, int sodium, int carbohydrate) {
+    public NutritionFactsTelescopingConstructor(final int servingSize,
+                                                final int servings,
+                                                final int calories,
+                                                final int fat,
+                                                final int sodium,
+                                                final int carbohydrate) {
         this.servingSize = servingSize;
         this.servings = servings;
         this.calories = calories;

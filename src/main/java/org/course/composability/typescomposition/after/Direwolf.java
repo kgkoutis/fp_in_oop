@@ -1,11 +1,11 @@
 package org.course.composability.typescomposition.after;
 
-final public class Direwolf implements Animal {
+public final class Direwolf implements Animal {
 
     private final Animal origin;
     // OR.... private final Dog origin;
 
-    public Direwolf(Animal origin) {
+    public Direwolf(final Animal origin) {
         this.origin = origin;
     }
     // OR....  public Direwolf(Dog origin) { this.origin = origin; }

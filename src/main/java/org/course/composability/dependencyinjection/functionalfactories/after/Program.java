@@ -2,10 +2,10 @@ package org.course.composability.dependencyinjection.functionalfactories.after;
 
 import java.util.function.Supplier;
 
-public class Program {
+public final class Program {
     private final Options options;
 
-    public Program(Supplier<Options> loggerOptionsFactory) {
+    public Program(final Supplier<Options> loggerOptionsFactory) {
         options = loggerOptionsFactory.get();
     }
 

@@ -9,11 +9,11 @@ import java.util.function.Supplier;
  * But remember that the LoggerOptionsFactory might capture an important abstraction for our business logic.
  * Meaning, if we foresee that its functionality its really central in our domain model we might better choose to keep it,
  * rather than having just a lambda expression.
- *
+ * <p>
  * PS: Do you think that Program can be more or less easily tested?
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         // also possible...
         final Supplier<Options> loggerOptionsFactory = () -> new Options(true, 10, "output.txt");
         final Program program = new Program(loggerOptionsFactory);

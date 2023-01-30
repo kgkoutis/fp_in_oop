@@ -1,9 +1,9 @@
 package org.course.composability.dependencyinjection.functionalfactories.before;
 
-public class Program {
+public final class Program {
     private final Options options;
 
-    public Program(LoggerOptionsFactory loggerOptionsFactory) // what should we put here instead of a factory?
+    public Program(final LoggerOptionsFactory loggerOptionsFactory) // what should we put here instead of a factory?
     {
         options = loggerOptionsFactory.create();
     }

@@ -6,7 +6,7 @@ import org.reusable.lenses.Lens;
 
 import static org.reusable.lenses.LensCompositions.lens;
 
-final public class HeroOptics {
+public final class HeroOptics {
     // Firstname
     private static final Lens<Hero, Firstname> heroFirstnameLens = Lens.of(Hero::firstname, newFirstname -> hero -> new Hero(newFirstname, hero.lastname()));
     private static final Lens<Firstname, String> firstnameLens = Lens.of(Firstname::getValue, newName -> firstname -> new Firstname(newName));

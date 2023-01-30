@@ -3,7 +3,7 @@ package org.reusable.tuples.quadruple;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class ComparableQuadruple<T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> implements Quadruple<T, U, V, W>, Comparable<ComparableQuadruple<T, U, V, W>> {
+public final class ComparableQuadruple<T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> implements Quadruple<T, U, V, W>, Comparable<ComparableQuadruple<T, U, V, W>> {
     private final Comparator<T> firstComparator;
     private final Comparator<U> secondComparator;
     private final Comparator<V> thirdComparator;
@@ -11,7 +11,14 @@ public class ComparableQuadruple<T extends Comparable<T>, U extends Comparable<U
 
     private final SimpleQuadruple<T, U, V, W> origin;
 
-    protected ComparableQuadruple(T first, U second, V third, W fourth, Comparator<T> firstComparator, Comparator<U> secondComparator, Comparator<V> thirdComparator, Comparator<W> fourthComparator) {
+    private ComparableQuadruple(final T first,
+                                final U second,
+                                final V third,
+                                final W fourth,
+                                final Comparator<T> firstComparator,
+                                final Comparator<U> secondComparator,
+                                final Comparator<V> thirdComparator,
+                                final Comparator<W> fourthComparator) {
         this.origin = SimpleQuadruple.of(first, second, third, fourth);
         this.firstComparator = firstComparator;
         this.secondComparator = secondComparator;
@@ -19,17 +26,27 @@ public class ComparableQuadruple<T extends Comparable<T>, U extends Comparable<U
         this.fourthComparator = fourthComparator;
     }
 
-    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> ComparableQuadruple<T, U, V, W> of(T first, U second, V third, W fourth) {
+    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> ComparableQuadruple<T, U, V, W> of(final T first,
+                                                                                                                                                          final U second,
+                                                                                                                                                          final V third,
+                                                                                                                                                          final W fourth) {
         return new ComparableQuadruple<>(first, second, third, fourth, Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder());
     }
 
-    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> ComparableQuadruple<T, U, V, W> of(T first, U second, V third, W fourth, Comparator<T> firstComparator, Comparator<U> secondComparator, Comparator<V> thirdComparator, Comparator<W> fourthComparator) {
+    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> ComparableQuadruple<T, U, V, W> of(final T first,
+                                                                                                                                                          final U second,
+                                                                                                                                                          final V third,
+                                                                                                                                                          final W fourth,
+                                                                                                                                                          final Comparator<T> firstComparator,
+                                                                                                                                                          final Comparator<U> secondComparator,
+                                                                                                                                                          final Comparator<V> thirdComparator,
+                                                                                                                                                          final Comparator<W> fourthComparator) {
         return new ComparableQuadruple<>(first, second, third, fourth, firstComparator, secondComparator, thirdComparator, fourthComparator);
     }
 
 
     @Override
-    public int compareTo(ComparableQuadruple<T, U, V, W> o) {
+    public int compareTo(final ComparableQuadruple<T, U, V, W> o) {
         int result = firstComparator.compare(first(), o.first());
         if (result != 0) {
             return result;
@@ -66,11 +83,15 @@ public class ComparableQuadruple<T extends Comparable<T>, U extends Comparable<U
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ComparableQuadruple<?, ?, ?, ?> that = (ComparableQuadruple<?, ?, ?, ?>) o;
-        return Objects.equals(firstComparator, that.firstComparator) && Objects.equals(secondComparator, that.secondComparator) && Objects.equals(thirdComparator, that.thirdComparator) && Objects.equals(fourthComparator, that.fourthComparator) && Objects.equals(origin, that.origin);
+        final ComparableQuadruple<?, ?, ?, ?> that = (ComparableQuadruple<?, ?, ?, ?>) o;
+        return Objects.equals(firstComparator, that.firstComparator) &&
+                Objects.equals(secondComparator, that.secondComparator) &&
+                Objects.equals(thirdComparator, that.thirdComparator) &&
+                Objects.equals(fourthComparator, that.fourthComparator) &&
+                Objects.equals(origin, that.origin);
     }
 
     @Override

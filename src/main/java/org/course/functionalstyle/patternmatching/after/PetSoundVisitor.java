@@ -1,18 +1,18 @@
 package org.course.functionalstyle.patternmatching.after;
 
-public class PetSoundVisitor implements PetVisitor<String> {
+public final class PetSoundVisitor implements PetVisitor<String> {
     @Override
-    public String visit(Dog dog) {
+    public String visit(final Dog dog) {
         return "Woof";
     }
 
     @Override
-    public String visit(Parrot parrot) {
+    public String visit(final Parrot parrot) {
         return "Siri, order me 10 boxes of pizza";
     }
 
     @Override
-    public String visit(Cat cat) {
+    public String visit(final Cat cat) {
         return "Meow";
     }
 }

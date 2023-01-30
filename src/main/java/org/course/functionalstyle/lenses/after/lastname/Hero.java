@@ -4,12 +4,14 @@ import org.course.functionalstyle.lenses.after.Firstname;
 import org.course.functionalstyle.lenses.after.Lastname;
 import org.reusable.maybe.Maybe;
 
-final public class Hero {
+public final class Hero {
     private final Firstname firstname;
     private final Maybe<Lastname> lastname;
     private final Maybe<Hero> friend;
 
-    public Hero(Firstname firstname, Maybe<Lastname> lastname, Maybe<Hero> friend) {
+    public Hero(final Firstname firstname,
+                final Maybe<Lastname> lastname,
+                final Maybe<Hero> friend) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.friend = friend;

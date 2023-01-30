@@ -9,25 +9,25 @@ import java.util.regex.Pattern;
 /**
  * This could be a record in later Java versions.
  */
-final public class DepartmentCode implements Formattable, Comparable<DepartmentCode> {
+public final class DepartmentCode implements Formattable, Comparable<DepartmentCode> {
     private static final Pattern pattern = Pattern.compile("[0-9]{6}");
     private final String code;
     private final int hashCode;
 
-    private DepartmentCode(String code) {
+    private DepartmentCode(final String code) {
         this.code = code;
         this.hashCode = Objects.hash(code);
     }
 
     // public static factory method
-    public static DepartmentCode of(String code) {
+    public static DepartmentCode of(final String code) {
         if (inputIsInvalid(code))
             throw new IllegalArgumentException("Invalid department code");
 
         return new DepartmentCode(code);
     }
 
-    private static boolean inputIsInvalid(String code) {
+    private static boolean inputIsInvalid(final String code) {
         return code == null || code.length() != 6 || !pattern.matcher(code).matches();
     }
 
@@ -45,15 +45,15 @@ final public class DepartmentCode implements Formattable, Comparable<DepartmentC
     }
 
     // standard boilerplate code
-    public boolean equals(DepartmentCode code) {
+    public boolean equals(final DepartmentCode code) {
         return Objects.equals(this, code);
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DepartmentCode that = (DepartmentCode) o;
+        final DepartmentCode that = (DepartmentCode) o;
         return code.equals(that.code);
     }
 
@@ -71,13 +71,17 @@ final public class DepartmentCode implements Formattable, Comparable<DepartmentC
 
     // extra methods
     private static final Comparator<DepartmentCode> CODE_COMPARATOR = Comparator.comparing(DepartmentCode::getCode);
+
     @Override
-    public int compareTo(DepartmentCode o) {
+    public int compareTo(final DepartmentCode o) {
         return CODE_COMPARATOR.compare(this, o);
     }
 
     @Override
-    public void formatTo(Formatter formatter, int flags, int width, int precision) {
+    public void formatTo(final Formatter formatter,
+                         final int flags,
+                         final int width,
+                         final int precision) {
         // possibly more control over the formatting
         formatter.format("%s", code);
     }

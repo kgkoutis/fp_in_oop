@@ -1,11 +1,13 @@
 package org.course.composability.dependencyinjection.functionalfactories.before;
 
-final public class LoggerOptionsFactory {
+public final class LoggerOptionsFactory {
     private final boolean isVerbose;
     private final int maxLinesOutput;
     private final String outputFileName;
 
-    public LoggerOptionsFactory(boolean isVerbose, int maxLinesOutput, String outputFileName) {
+    public LoggerOptionsFactory(final boolean isVerbose,
+                                final int maxLinesOutput,
+                                final String outputFileName) {
         this.isVerbose = isVerbose;
         if (maxLinesOutput < 0 || maxLinesOutput > 100) {
             throw new IllegalArgumentException("maxLinesOutput must be >= 0 and <= 100");

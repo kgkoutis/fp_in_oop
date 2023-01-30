@@ -11,36 +11,39 @@ public final class Result<V, E extends Throwable> {
     private final E throwable;
     private final boolean isSuccess;
 
-    public Result(V value, E throwable, boolean isSuccess) {
+    public Result(final V value,
+                  final E throwable,
+                  final boolean isSuccess) {
         this.value = value;
         this.throwable = throwable;
         this.isSuccess = isSuccess;
     }
 
-    public static <V, E extends Throwable> Result<V, E> success(V value) {
+    public static <V, E extends Throwable> Result<V, E> success(final V value) {
         return new Result<>(value, null, true);
     }
 
-    public static <V, E extends Throwable> Result<V, E> failure(E throwable) {
+    public static <V, E extends Throwable> Result<V, E> failure(final E throwable) {
         return new Result<>(null, throwable, false);
     }
 
-    public <R> Optional<R> mapSuccess(Function<V, R> fn) {
+    public <R> Optional<R> mapSuccess(final Function<V, R> fn) {
         return this.isSuccess ? Optional.ofNullable(this.value).map(fn)
                 : Optional.empty();
     }
 
-    public <R> Optional<R> mapFailure(Function<E, R> fn) {
+    public <R> Optional<R> mapFailure(final Function<E, R> fn) {
         return this.isSuccess ? Optional.empty()
                 : Optional.ofNullable(this.throwable).map(fn);
     }
 
-    public <R> R map(Function<V, R> successFn, Function<E, R> failureFn) {
+    public <R> R map(final Function<V, R> successFn,
+                     final Function<E, R> failureFn) {
         return this.isSuccess ? successFn.apply(this.value) //
                 : failureFn.apply(this.throwable);
     }
 
-    public void ifSuccess(Consumer<? super V> action) {
+    public void ifSuccess(final Consumer<? super V> action) {
         if (!this.isSuccess) {
             return;
         }
@@ -48,7 +51,7 @@ public final class Result<V, E extends Throwable> {
         action.accept(this.value);
     }
 
-    public void ifFailure(Consumer<? super E> action) {
+    public void ifFailure(final Consumer<? super E> action) {
         if (this.isSuccess) {
             return;
         }
@@ -56,8 +59,8 @@ public final class Result<V, E extends Throwable> {
         action.accept(this.throwable);
     }
 
-    public void handle(Consumer<? super V> succcessAction,
-                       Consumer<? super E> failureAction) {
+    public void handle(final Consumer<? super V> succcessAction,
+                       final Consumer<? super E> failureAction) {
         if (this.isSuccess) {
             succcessAction.accept(this.value);
             return;
@@ -67,18 +70,18 @@ public final class Result<V, E extends Throwable> {
     }
 
 
-    public V orElse(V other) {
+    public V orElse(final V other) {
         return this.isSuccess ? this.value
                 : other;
     }
 
-    public V orElseGet(Supplier<? extends V> otherSupplier) {
+    public V orElseGet(final Supplier<? extends V> otherSupplier) {
         return this.isSuccess ? this.value
                 : otherSupplier.get();
     }
 
     @SuppressWarnings("unchecked")
-    private <T extends Throwable> void sneakyThrow(Throwable e) throws T {
+    private <T extends Throwable> void sneakyThrow(final Throwable e) throws T {
         throw (T) e;
     }
 
@@ -104,10 +107,10 @@ public final class Result<V, E extends Throwable> {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (Result) obj;
+        final var that = (Result) obj;
         return Objects.equals(this.value, that.value) &&
                 Objects.equals(this.throwable, that.throwable) &&
                 this.isSuccess == that.isSuccess;

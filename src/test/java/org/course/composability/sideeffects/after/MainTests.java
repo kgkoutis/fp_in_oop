@@ -23,7 +23,7 @@ class MainTests {
 
         @BeforeEach
         void setUp() throws NoSuchMethodException {
-            Method method = Main.class.getDeclaredMethod("insertPersonsIntoStore", List.class, Consumer.class, Consumer.class);
+            final Method method = Main.class.getDeclaredMethod("insertPersonsIntoStore", List.class, Consumer.class, Consumer.class);
             method.setAccessible(true);
             this.method = method;
         }
@@ -40,10 +40,10 @@ class MainTests {
             @BeforeEach
             void createNewStructurallyGoodListWithAverageAbove20() {
                 // Arrange
-                Person p1 = new Person(UUID.fromString("b15ca0a3-7d10-409f-ae6d-42e491a77671"), 40);
-                Person p2 = new Person(UUID.fromString("6223a2e6-7d04-46ef-82cb-4b1116c989a8"), 10);
-                Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 30);
-                Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 25);
+                final Person p1 = new Person(UUID.fromString("b15ca0a3-7d10-409f-ae6d-42e491a77671"), 40);
+                final Person p2 = new Person(UUID.fromString("6223a2e6-7d04-46ef-82cb-4b1116c989a8"), 10);
+                final Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 30);
+                final Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 25);
                 this.persons = List.of(p1, p2, p3, p4);
             }
 
@@ -52,10 +52,10 @@ class MainTests {
             public void when_retrieved_from_personsStore___should_return_outputList_same_as_inputList() throws InvocationTargetException, IllegalAccessException {
                 // Arrange
                 final List<List<Person>> output = new ArrayList<>();
-                Consumer<List<Person>> callback = output::add;
+                final Consumer<List<Person>> callback = output::add;
 
-                AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
-                Consumer<String> throwIllegalArgumentException = (s) -> {
+                final AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
+                final Consumer<String> throwIllegalArgumentException = (s) -> {
                     timesIllegalArgumentExceptionWasThrown.getAndIncrement();
                 };
 
@@ -65,7 +65,7 @@ class MainTests {
                 // Assert
                 assertEquals(1, output.size());
                 assertEquals(4, output.get(0).size());
-                List<Person> personsSaved = output.get(0);
+                final List<Person> personsSaved = output.get(0);
                 assertEquals(4, personsSaved.size());
                 for (int i = 0; i < personsSaved.size(); i++) {
                     assertEquals(persons.get(i), personsSaved.get(i)); // by reference
@@ -78,9 +78,9 @@ class MainTests {
             @DisplayName("when retrieved from persons store, callback should be called exactly once")
             public void when_retrieved_from_personsStore___callback_should_be_called_exactly_once() throws InvocationTargetException, IllegalAccessException {
                 // Arrange
-                AtomicInteger timesCallbackWasCalled = new AtomicInteger();
+                final AtomicInteger timesCallbackWasCalled = new AtomicInteger();
                 final List<List<Person>> output = new ArrayList<>();
-                Consumer<List<Person>> callback = (list) -> {
+                final Consumer<List<Person>> callback = (list) -> {
                     timesCallbackWasCalled.getAndIncrement();
                 };
 
@@ -96,10 +96,10 @@ class MainTests {
             public void when_retrieved_from_personsStore___no_exceptions_should_be_thrown_by_the_exception_handler() throws InvocationTargetException, IllegalAccessException {
                 // Arrange
                 final List<List<Person>> output = new ArrayList<>();
-                Consumer<List<Person>> callback = output::add;
+                final Consumer<List<Person>> callback = output::add;
 
-                AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
-                Consumer<String> throwIllegalArgumentException = (s) -> {
+                final AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
+                final Consumer<String> throwIllegalArgumentException = (s) -> {
                     timesIllegalArgumentExceptionWasThrown.getAndIncrement();
                 };
 
@@ -122,10 +122,10 @@ class MainTests {
 
             @BeforeEach
             void createNewStructurallyGoodListWithAverageBelow20() {
-                Person p1 = new Person(UUID.fromString("b15ca0a3-7d10-409f-ae6d-42e491a77671"), 10);
-                Person p2 = new Person(UUID.fromString("6223a2e6-7d04-46ef-82cb-4b1116c989a8"), 10);
-                Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 20);
-                Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 20);
+                final Person p1 = new Person(UUID.fromString("b15ca0a3-7d10-409f-ae6d-42e491a77671"), 10);
+                final Person p2 = new Person(UUID.fromString("6223a2e6-7d04-46ef-82cb-4b1116c989a8"), 10);
+                final Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 20);
+                final Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 20);
                 this.persons = List.of(p1, p2, p3, p4);
             }
 
@@ -134,10 +134,10 @@ class MainTests {
             public void when_retrieved_from_personsStore___should_return_outputList_same_as_inputList() throws InvocationTargetException, IllegalAccessException {
                 // Arrange
                 final List<List<Person>> output = new ArrayList<>();
-                Consumer<List<Person>> callback = output::add;
+                final Consumer<List<Person>> callback = output::add;
 
-                AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
-                Consumer<String> throwIllegalArgumentException = (s) -> {
+                final AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
+                final Consumer<String> throwIllegalArgumentException = (s) -> {
                     timesIllegalArgumentExceptionWasThrown.getAndIncrement();
                 };
 
@@ -147,10 +147,10 @@ class MainTests {
                 // Assert
                 assertEquals(1, output.size());
                 assertEquals(4, output.get(0).size());
-                List<Person> personsSaved = output.get(0);
+                final List<Person> personsSaved = output.get(0);
                 assertEquals(4, personsSaved.size());
                 for (int i = 0; i < personsSaved.size(); i++) {
-                    Person expectedPerson = new Person(persons.get(i).getId(), persons.get(i).getAge() + 9000);
+                    final Person expectedPerson = new Person(persons.get(i).getId(), persons.get(i).getAge() + 9000);
                     assertEquals(expectedPerson, personsSaved.get(i)); // by reference
                     assertEquals(expectedPerson.getId(), personsSaved.get(i).getId()); // by value
                     assertEquals(expectedPerson.getAge(), personsSaved.get(i).getAge()); // by value
@@ -161,9 +161,9 @@ class MainTests {
             @DisplayName("when retrieved from persons store, callback should be called exactly once")
             public void when_retrieved_from_personsStore___callback_should_be_called_exactly_once() throws InvocationTargetException, IllegalAccessException {
                 // Arrange
-                AtomicInteger timesCallbackWasCalled = new AtomicInteger();
+                final AtomicInteger timesCallbackWasCalled = new AtomicInteger();
                 final List<List<Person>> output = new ArrayList<>();
-                Consumer<List<Person>> callback = (list) -> {
+                final Consumer<List<Person>> callback = (list) -> {
                     timesCallbackWasCalled.getAndIncrement();
                 };
 
@@ -179,10 +179,10 @@ class MainTests {
             public void when_retrieved_from_personsStore___no_exceptions_should_be_thrown_by_the_exception_handler() throws InvocationTargetException, IllegalAccessException {
                 // Arrange
                 final List<List<Person>> output = new ArrayList<>();
-                Consumer<List<Person>> callback = output::add;
+                final Consumer<List<Person>> callback = output::add;
 
-                AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
-                Consumer<String> throwIllegalArgumentException = (s) -> {
+                final AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
+                final Consumer<String> throwIllegalArgumentException = (s) -> {
                     timesIllegalArgumentExceptionWasThrown.getAndIncrement();
                 };
 
@@ -205,10 +205,10 @@ class MainTests {
 
             @BeforeEach
             void createNewStructurallyGoodListWithAverageEqualTo20() {
-                Person p1 = new Person(UUID.fromString("b15ca0a3-7d10-409f-ae6d-42e491a77671"), 20);
-                Person p2 = new Person(UUID.fromString("6223a2e6-7d04-46ef-82cb-4b1116c989a8"), 30);
-                Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 10);
-                Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 20);
+                final Person p1 = new Person(UUID.fromString("b15ca0a3-7d10-409f-ae6d-42e491a77671"), 20);
+                final Person p2 = new Person(UUID.fromString("6223a2e6-7d04-46ef-82cb-4b1116c989a8"), 30);
+                final Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 10);
+                final Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 20);
                 this.persons = List.of(p1, p2, p3, p4);
             }
 
@@ -217,10 +217,10 @@ class MainTests {
             public void when_retrieved_from_personsStore___should_return_outputList_same_as_inputList() throws InvocationTargetException, IllegalAccessException {
                 // Arrange
                 final List<List<Person>> output = new ArrayList<>();
-                Consumer<List<Person>> callback = output::add;
+                final Consumer<List<Person>> callback = output::add;
 
-                AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
-                Consumer<String> throwIllegalArgumentException = (s) -> {
+                final AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
+                final Consumer<String> throwIllegalArgumentException = (s) -> {
                     timesIllegalArgumentExceptionWasThrown.getAndIncrement();
                 };
 
@@ -230,10 +230,10 @@ class MainTests {
                 // Assert
                 assertEquals(1, output.size());
                 assertEquals(4, output.get(0).size());
-                List<Person> personsSaved = output.get(0);
+                final List<Person> personsSaved = output.get(0);
                 assertEquals(4, personsSaved.size());
                 for (int i = 0; i < personsSaved.size(); i++) {
-                    Person expectedPerson = new Person(persons.get(i).getId(), persons.get(i).getAge() + 9000);
+                    final Person expectedPerson = new Person(persons.get(i).getId(), persons.get(i).getAge() + 9000);
                     assertEquals(expectedPerson, personsSaved.get(i)); // by reference
                     assertEquals(expectedPerson.getId(), personsSaved.get(i).getId()); // by value
                     assertEquals(expectedPerson.getAge(), personsSaved.get(i).getAge()); // by value
@@ -244,9 +244,9 @@ class MainTests {
             @DisplayName("when retrieved from persons store, callback should be called exactly once")
             public void when_retrieved_from_personsStore___callback_should_be_called_exactly_once() throws InvocationTargetException, IllegalAccessException {
                 // Arrange
-                AtomicInteger timesCallbackWasCalled = new AtomicInteger();
+                final AtomicInteger timesCallbackWasCalled = new AtomicInteger();
                 final List<List<Person>> output = new ArrayList<>();
-                Consumer<List<Person>> callback = (list) -> {
+                final Consumer<List<Person>> callback = (list) -> {
                     timesCallbackWasCalled.getAndIncrement();
                 };
 
@@ -262,10 +262,10 @@ class MainTests {
             public void when_retrieved_from_personsStore___no_exceptions_should_be_thrown_by_the_exception_handler() throws InvocationTargetException, IllegalAccessException {
                 // Arrange
                 final List<List<Person>> output = new ArrayList<>();
-                Consumer<List<Person>> callback = output::add;
+                final Consumer<List<Person>> callback = output::add;
 
-                AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
-                Consumer<String> throwIllegalArgumentException = (s) -> {
+                final AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
+                final Consumer<String> throwIllegalArgumentException = (s) -> {
                     timesIllegalArgumentExceptionWasThrown.getAndIncrement();
                 };
 
@@ -301,14 +301,14 @@ class MainTests {
                 public void should_throw_an_IllegalArgumentException_and_not_call_the_callback_handler() throws InvocationTargetException, IllegalAccessException {
                     // Arrange
                     final List<List<Person>> output = new ArrayList<>();
-                    AtomicInteger timesCallbackWasCalled = new AtomicInteger();
-                    Consumer<List<Person>> callback = e -> {
+                    final AtomicInteger timesCallbackWasCalled = new AtomicInteger();
+                    final Consumer<List<Person>> callback = e -> {
                         output.add(e);
                         timesCallbackWasCalled.getAndIncrement();
                     };
 
-                    AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
-                    Consumer<String> throwIllegalArgumentException = (s) -> {
+                    final AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
+                    final Consumer<String> throwIllegalArgumentException = (s) -> {
                         timesIllegalArgumentExceptionWasThrown.getAndIncrement();
                     };
 
@@ -341,14 +341,14 @@ class MainTests {
                 public void should_throw_an_IllegalArgumentException_and_not_call_the_callback_handler() throws InvocationTargetException, IllegalAccessException {
                     // Arrange
                     final List<List<Person>> output = new ArrayList<>();
-                    AtomicInteger timesCallbackWasCalled = new AtomicInteger();
-                    Consumer<List<Person>> callback = e -> {
+                    final AtomicInteger timesCallbackWasCalled = new AtomicInteger();
+                    final Consumer<List<Person>> callback = e -> {
                         output.add(e);
                         timesCallbackWasCalled.getAndIncrement();
                     };
 
-                    AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
-                    Consumer<String> throwIllegalArgumentException = (s) -> {
+                    final AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
+                    final Consumer<String> throwIllegalArgumentException = (s) -> {
                         timesIllegalArgumentExceptionWasThrown.getAndIncrement();
                     };
 
@@ -374,10 +374,10 @@ class MainTests {
                 @BeforeEach
                 void createNewListWithOneOfPersonsEqualToNull() {
                     this.persons = new ArrayList<>();
-                    Person p1 = new Person(UUID.fromString("b15ca0a3-7d10-409f-ae6d-42e491a77671"), 20);
-                    Person p2 = null;
-                    Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 10);
-                    Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 20);
+                    final Person p1 = new Person(UUID.fromString("b15ca0a3-7d10-409f-ae6d-42e491a77671"), 20);
+                    final Person p2 = null;
+                    final Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 10);
+                    final Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 20);
                     this.persons.add(p1);
                     this.persons.add(p2);
                     this.persons.add(p3);
@@ -389,14 +389,14 @@ class MainTests {
                 public void should_throw_an_IllegalArgumentException_and_not_call_the_callback_handler() throws InvocationTargetException, IllegalAccessException {
                     // Arrange
                     final List<List<Person>> output = new ArrayList<>();
-                    AtomicInteger timesCallbackWasCalled = new AtomicInteger();
-                    Consumer<List<Person>> callback = e -> {
+                    final AtomicInteger timesCallbackWasCalled = new AtomicInteger();
+                    final Consumer<List<Person>> callback = e -> {
                         output.add(e);
                         timesCallbackWasCalled.getAndIncrement();
                     };
 
-                    AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
-                    Consumer<String> throwIllegalArgumentException = (s) -> {
+                    final AtomicInteger timesIllegalArgumentExceptionWasThrown = new AtomicInteger();
+                    final Consumer<String> throwIllegalArgumentException = (s) -> {
                         timesIllegalArgumentExceptionWasThrown.getAndIncrement();
                     };
 

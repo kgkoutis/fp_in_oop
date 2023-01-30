@@ -4,19 +4,19 @@ import org.reusable.maybe.Maybe;
 
 /**
  * Working with Maybe values can be tricky because you have to always pattern match on the value.
- *
+ * <p>
  * Here we have a Hero class with a firstname, a lastname and a friend. The friend is also a Hero.
- *
+ * <p>
  * The lastname is a Maybe value, because it is designed to be optional.
  * The friend value is also a Maybe value, because it is designed to be optional.
- *
+ * <p>
  * In our example we have 3 heros, 2 of them are missing values. Look how complicated the code is at step 4 to update the lastname of the friend.
  * It has several nested pattern matches and it is not easy to understand.
- *
+ * <p>
  * What can we do about it?
- * */
+ */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final Hero superman = new Hero(Firstname.of("Clark"), Maybe.just(Lastname.of("Kent")), Maybe.nothing());
         final Hero batman = new Hero(Firstname.of("Bruce"), Maybe.just(Lastname.of("Wayne")), Maybe.just(superman));
 
@@ -28,7 +28,7 @@ public class Main {
         mainLogic(guyNamedBruce);
     }
 
-    private static void mainLogic(Hero hero) {
+    private static void mainLogic(final Hero hero) {
 
         // 1. set new lastname, if not nothing
         final Hero springsteen = new Hero(hero.firstname(), hero.lastname().bind(
@@ -45,11 +45,12 @@ public class Main {
         );
 
         // 4. update current lastname, if not nothing, with a new value based on the old one
-        final Hero heroWithUpdatedFriend = new Hero(springsteen.firstname(), springsteen.lastname(), springsteen.friend().bind(
-                friend -> Maybe.just(new Hero(friend.firstname(), friend.lastname().bind(
-                        lastname -> Maybe.just(Lastname.of(lastname.getValue() + " sucks"))
-                ), friend.friend()))
-        ));
+        final Hero heroWithUpdatedFriend = new Hero(springsteen.firstname(), springsteen.lastname(), springsteen.friend()
+                .bind(
+                        friend -> Maybe.just(new Hero(friend.firstname(), friend.lastname().bind(
+                                lastname -> Maybe.just(Lastname.of(lastname.getValue() + " sucks"))
+                        ), friend.friend()))
+                ));
 
         // 5. print hero
         System.out.println(heroWithUpdatedFriend);

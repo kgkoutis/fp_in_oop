@@ -2,11 +2,13 @@ package org.course.functionalstyle.lenses.after.firstname;
 
 import org.course.functionalstyle.lenses.after.Firstname;
 import org.course.functionalstyle.lenses.after.Lastname;
-final public class Hero {
+
+public final class Hero {
     private final Firstname firstname;
     private final Lastname lastname;
 
-    public Hero(Firstname firstname, Lastname lastname) {
+    public Hero(final Firstname firstname,
+                final Lastname lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }
@@ -18,6 +20,7 @@ final public class Hero {
     public Lastname lastname() {
         return lastname;
     }
+
     @Override
     public String toString() {
         return "Hero {" +

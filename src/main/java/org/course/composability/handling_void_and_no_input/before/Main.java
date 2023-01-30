@@ -7,8 +7,8 @@ package org.course.composability.handling_void_and_no_input.before;
  * How can we tackle this problem?
  * */
 public class Main {
-    public static void main(String[] args) {
-        A a = new A();
+    public static void main(final String[] args) {
+        final A a = new A();
         a.compose();
     }
 }

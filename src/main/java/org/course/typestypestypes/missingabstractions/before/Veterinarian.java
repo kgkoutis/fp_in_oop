@@ -2,7 +2,7 @@ package org.course.typestypestypes.missingabstractions.before;
 
 import java.util.HashMap;
 
-public class Veterinarian {
+public final class Veterinarian {
 
     public Veterinarian() {
         this.vetSayings = new HashMap<>();
@@ -13,7 +13,7 @@ public class Veterinarian {
 
     private final HashMap<String, String> vetSayings;
 
-    void acceptOwner(Person p) {
+    void acceptOwner(final Person p) {
         if (p.HasCat)
             System.out.println(vetSayings.get("cat"));
         if (p.HasDog)

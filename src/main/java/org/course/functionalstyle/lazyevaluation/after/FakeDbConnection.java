@@ -5,7 +5,7 @@ import java.util.Objects;
 public final class FakeDbConnection {
     private final String currentThreadName;
 
-    FakeDbConnection(String currentThreadName) {
+    FakeDbConnection(final String currentThreadName) {
         this.currentThreadName = currentThreadName;
     }
 
@@ -14,10 +14,10 @@ public final class FakeDbConnection {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (FakeDbConnection) obj;
+        final var that = (FakeDbConnection) obj;
         return Objects.equals(this.currentThreadName, that.currentThreadName);
     }
 

@@ -6,21 +6,21 @@ import org.reusable.maybe.Nothing;
 
 import java.util.function.Function;
 
-public class MaybeMapVisitor<T, V> implements MaybeVisitor<T, Maybe<V>> {
+public final class MaybeMapVisitor<T, V> implements MaybeVisitor<T, Maybe<V>> {
     private final Function<T, V> mappingFunction;
 
-    public MaybeMapVisitor(Function<T, V> mappingFunction) {
+    public MaybeMapVisitor(final Function<T, V> mappingFunction) {
         this.mappingFunction = mappingFunction;
     }
 
     @Override
-    public Maybe<V> visit(Just<T> just) {
-        V result = mappingFunction.apply(just.getValue());
+    public Maybe<V> visit(final Just<T> just) {
+        final V result = mappingFunction.apply(just.getValue());
         return Maybe.just(result);
     }
 
     @Override
-    public Maybe<V> visit(Nothing<T> nothing) {
+    public Maybe<V> visit(final Nothing<T> nothing) {
         return Maybe.nothing();
     }
 }

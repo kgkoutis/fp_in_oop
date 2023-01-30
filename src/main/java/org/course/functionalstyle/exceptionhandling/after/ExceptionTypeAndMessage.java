@@ -2,11 +2,12 @@ package org.course.functionalstyle.exceptionhandling.after;
 
 import java.lang.reflect.Type;
 
-public class ExceptionTypeAndMessage {
+public final class ExceptionTypeAndMessage {
     private final String message;
     private final Class<?> exceptionType;
 
-    private ExceptionTypeAndMessage(Class<?> exceptionType, String message) {
+    private ExceptionTypeAndMessage(final Class<?> exceptionType,
+                                    final String message) {
         this.exceptionType = exceptionType;
         this.message = message;
     }
@@ -19,7 +20,8 @@ public class ExceptionTypeAndMessage {
         return exceptionType;
     }
 
-    public static ExceptionTypeAndMessage of(Class<?> exceptionType, String message) {
+    public static ExceptionTypeAndMessage of(final Class<?> exceptionType,
+                                             final String message) {
         return new ExceptionTypeAndMessage(exceptionType, message);
     }
 }

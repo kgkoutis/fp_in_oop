@@ -3,7 +3,7 @@ package org.reusable;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-final public class Unit {
+public final class Unit {
     private static Unit instance;
     private static final Lock lock = new ReentrantLock();
 

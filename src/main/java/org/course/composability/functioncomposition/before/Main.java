@@ -18,7 +18,7 @@ package org.course.composability.functioncomposition.before;
  * How would we express this in code?
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final String initialInput = "Hello World!";
 
         final String[] result1 = splitStringInWords(initialInput);
@@ -27,7 +27,7 @@ public class Main {
         System.out.println(result2);
     }
 
-    private static String[] splitStringInWords(String str) {
+    private static String[] splitStringInWords(final String str) {
         final String[] parts = str.split("\\s+"); // split by one or more spaces
 
         for (int i = 0; i < parts.length; i++) {
@@ -37,7 +37,7 @@ public class Main {
         return parts;
     }
 
-    private static int countArray(String[] parts) {
+    private static int countArray(final String[] parts) {
         return parts.length;
     }
 }

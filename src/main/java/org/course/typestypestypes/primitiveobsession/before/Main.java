@@ -6,30 +6,30 @@ import org.reusable.tuples.pair.Pairs;
 
 /**
  * There are 2 big issues (that cause all sort of code smells) in this codebase. It can be said that it is simply a mess.
- *
+ * <p>
  * The first issue is the fact that we keep working with Strings.
  * Check for example the input parameters of the methods (:compareCodes), (:getLocationFromCode).
  * Working with the lower-level types makes as avoid working with Domain-level types and
  * leading to needless validation and conversion code all over the place. It can also lead to silly errors when you
  * mistake one String argument for another, e.g. when a function wants 3 strings and you place the first one in the slot of the 2nd one.
- *
+ * <p>
  * The 2nd issue is the fact that all the functionality for DepartmentCode and Location, that could have been part of these 2 classes,
  * is spread across multiple classes (take a look in Helpers folder).
- *
+ * <p>
  * This is not always a bad thing, especially if the helper class mutates the object it is working with.
  * But i) all the helpers here are leaving the inner state of the DepartmentCode and Location objects intact
  * and ii) they correspond to standard informational methods a class could possess on its own (equals, hashCode, toString, compareTo, copy, etc.).
- *
+ * <p>
  * What is needed is that we encapsulate all the validation logic into the DepartmentCode class so that when an DepartmentCode object is created
  * it is guaranteed to be valid. We also need to move as much functionality as possible that is related to DepartmentCode and Location into the body of these classes.
- *
+ * <p>
  * How do we do all of that?
- *
+ * <p>
  * SIDENOTE: We assume that the DepartmentCode as concept is a 6-digit code of the form "123456" where if the first digit is less than 6
  * then the corresponding Location is Amsterdam, otherwise Groningen.
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         final Pair<String, String> codes = createCodes();
         final String code1 = codes.first();
         final String code2 = codes.second();
@@ -50,16 +50,17 @@ public class Main {
         System.out.println("Location of code1 is: " + location);
     }
 
-    private static Location getLocationFromCode(String code1) {
+    private static Location getLocationFromCode(final String code1) {
         final LocationPicker locationPicker = new LocationPicker();
         return locationPicker.getLocation(code1);
     }
 
-    private static DepartmentCode copyCode(String code1) {
+    private static DepartmentCode copyCode(final String code1) {
         return DepartmentCodeCopier.copy(code1);
     }
 
-    private static boolean compareCodes(String code1, String code2) {
+    private static boolean compareCodes(final String code1,
+                                        final String code2) {
         final DepartmentCodeEqualityComparer comparer = new DepartmentCodeEqualityComparer();
         return comparer.areEqual(code1, code2);
     }

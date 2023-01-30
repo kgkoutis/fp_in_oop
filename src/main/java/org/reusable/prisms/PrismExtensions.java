@@ -2,7 +2,7 @@ package org.reusable.prisms;
 
 import org.reusable.maybe.Maybe;
 
-public class PrismExtensions {
+public final class PrismExtensions {
     /**
      * Identity lens
      */
