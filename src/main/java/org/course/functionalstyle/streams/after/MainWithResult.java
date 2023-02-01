@@ -29,7 +29,7 @@ public class MainWithResult {
 
         // first way to handle result
         final Optional<Map<Integer, List<String>>> ss = animals2
-                .mapSuccess(
+                .matchSuccess(
                         success -> success
                                 .stream()
                                 .map(String::toUpperCase)

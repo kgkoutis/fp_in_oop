@@ -27,17 +27,17 @@ public final class Result<V, E extends Throwable> {
         return new Result<>(null, throwable, false);
     }
 
-    public <R> Optional<R> mapSuccess(final Function<V, R> fn) {
+    public <R> Optional<R> matchSuccess(final Function<V, R> fn) {
         return this.isSuccess ? Optional.ofNullable(this.value).map(fn)
                 : Optional.empty();
     }
 
-    public <R> Optional<R> mapFailure(final Function<E, R> fn) {
+    public <R> Optional<R> matchFailure(final Function<E, R> fn) {
         return this.isSuccess ? Optional.empty()
                 : Optional.ofNullable(this.throwable).map(fn);
     }
 
-    public <R> R map(final Function<V, R> successFn,
+    public <R> R match(final Function<V, R> successFn,
                      final Function<E, R> failureFn) {
         return this.isSuccess ? successFn.apply(this.value) //
                 : failureFn.apply(this.throwable);
@@ -59,14 +59,15 @@ public final class Result<V, E extends Throwable> {
         action.accept(this.throwable);
     }
 
-    public void handle(final Consumer<? super V> succcessAction,
+    public Unit handle(final Consumer<? super V> successAction,
                        final Consumer<? super E> failureAction) {
         if (this.isSuccess) {
-            succcessAction.accept(this.value);
-            return;
+            successAction.accept(this.value);
+            return Unit.get();
         }
 
         failureAction.accept(this.throwable);
+        return Unit.get();
     }
 
 
