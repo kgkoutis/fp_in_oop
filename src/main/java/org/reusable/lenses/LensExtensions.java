@@ -2,10 +2,10 @@ package org.reusable.lenses;
 
 import org.reusable.maybe.Maybe;
 import org.reusable.prisms.Prism;
-import org.reusable.tuples.pair.Pair;
-import org.reusable.tuples.pair.Pairs;
-import org.reusable.tuples.quadruple.Quadruple;
-import org.reusable.tuples.quadruple.Quadruples;
+import org.reusable.tuples.pairs.Pair;
+import org.reusable.tuples.pairs.Pairs;
+import org.reusable.tuples.quadruples.Quadruple;
+import org.reusable.tuples.quadruples.Quadruples;
 import org.reusable.tuples.triples.Triple;
 import org.reusable.tuples.triples.Triples;
 

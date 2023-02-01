@@ -1,4 +1,4 @@
-package org.reusable.tuples.quadruple;
+package org.reusable.tuples.quadruples;
 
 import java.util.Objects;
 
@@ -16,6 +16,13 @@ public final class SimpleQuadruple<T, U, V, W> implements Quadruple<T, U, V, W> 
         this.second = second;
         this.third = third;
         this.fourth = fourth;
+    }
+
+    private SimpleQuadruple(final Quadruple<T, U, V, W> other) {
+        this.first = other.first();
+        this.second = other.second();
+        this.third = other.third();
+        this.fourth = other.fourth();
     }
 
     public T first() {
@@ -39,6 +46,10 @@ public final class SimpleQuadruple<T, U, V, W> implements Quadruple<T, U, V, W> 
                                                               final V third,
                                                               final W fourth) {
         return new SimpleQuadruple<>(first, second, third, fourth);
+    }
+
+    public static <T, U, V, W> Quadruple<T, U, V, W> of(final SimpleQuadruple<T, U, V, W> other) {
+        return new SimpleQuadruple<>(other);
     }
 
     @Override

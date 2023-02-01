@@ -1,4 +1,4 @@
-package org.reusable.tuples.pair;
+package org.reusable.tuples.pairs;
 
 import java.util.Objects;
 
@@ -12,9 +12,18 @@ public final class SimplePair<T, V> implements Pair<T, V> {
         this.second = second;
     }
 
+    private SimplePair(final Pair<T, V> pair) {
+        this.first = pair.first();
+        this.second = pair.second();
+    }
+
     public static <T, V> SimplePair<T, V> of(final T first,
                                              final V second) {
         return new SimplePair<>(first, second);
+    }
+
+    public static <T, V> SimplePair<T, V> of(final Pair<T, V> pair) {
+        return new SimplePair<>(pair);
     }
 
     public T first() {

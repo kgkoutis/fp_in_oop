@@ -21,6 +21,16 @@ public final class ComparableTriple<T extends Comparable<T>, U extends Comparabl
         this.thirdComparator = thirdComparator;
     }
 
+    private ComparableTriple(final Triple<T, U, V> triple,
+                             final Comparator<T> firstComparator,
+                             final Comparator<U> secondComparator,
+                             final Comparator<V> thirdComparator) {
+        this.origin = SimpleTriple.of(triple.first(), triple.second(), triple.third());
+        this.firstComparator = firstComparator;
+        this.secondComparator = secondComparator;
+        this.thirdComparator = thirdComparator;
+    }
+
     public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>> ComparableTriple<T, U, V> of(final T first,
                                                                                                                            final U second,
                                                                                                                            final V third) {
@@ -34,6 +44,17 @@ public final class ComparableTriple<T extends Comparable<T>, U extends Comparabl
                                                                                                                            final Comparator<U> secondComparator,
                                                                                                                            final Comparator<V> thirdComparator) {
         return new ComparableTriple<>(first, second, third, firstComparator, secondComparator, thirdComparator);
+    }
+
+    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>> ComparableTriple<T, U, V> of(final Triple<T, U, V> triple) {
+        return new ComparableTriple<>(triple, Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder());
+    }
+
+    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>> ComparableTriple<T, U, V> of(final Triple<T, U, V> triple,
+                                                                                                                           final Comparator<T> firstComparator,
+                                                                                                                           final Comparator<U> secondComparator,
+                                                                                                                           final Comparator<V> thirdComparator) {
+        return new ComparableTriple<>(triple, firstComparator, secondComparator, thirdComparator);
     }
 
     @Override
@@ -90,4 +111,9 @@ public final class ComparableTriple<T extends Comparable<T>, U extends Comparabl
         }
         return thirdComparator.compare(third(), o.third());
     }
+
+
+    public Comparator<T> getFirstComparator() { return firstComparator ;}
+    public Comparator<U> getSecondComparator() { return secondComparator ;}
+    public Comparator<V> getThirdComparator() { return thirdComparator ;}
 }

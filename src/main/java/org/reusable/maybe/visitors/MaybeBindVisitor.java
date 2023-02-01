@@ -20,6 +20,6 @@ public final class MaybeBindVisitor<T, V> implements MaybeVisitor<T, Maybe<V>> {
 
     @Override
     public Maybe<V> visit(final Nothing<T> nothing) {
-        return new Nothing<>();
+        return Nothing.<V>get();
     }
 }

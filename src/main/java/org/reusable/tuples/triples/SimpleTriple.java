@@ -13,6 +13,12 @@ public final class SimpleTriple<T, U, V> implements Triple<T, U, V> {
         this.third = third;
     }
 
+    private SimpleTriple(final Triple<T, U, V> triple) {
+        this.first = triple.first();
+        this.second = triple.second();
+        this.third = triple.third();
+    }
+
     public T first() {
         return first;
     }
@@ -29,5 +35,9 @@ public final class SimpleTriple<T, U, V> implements Triple<T, U, V> {
                                                      final U second,
                                                      final V third) {
         return new SimpleTriple<>(first, second, third);
+    }
+
+    public static <T, U, V> Triple<T, U, V> of(final SimpleTriple<T, U, V> triple) {
+        return new SimpleTriple<>(triple);
     }
 }

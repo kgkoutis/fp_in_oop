@@ -30,6 +30,20 @@ public final class ComparableQuintuple<T extends Comparable<T>, U extends Compar
         this.fifthComparator = fifthComparator;
     }
 
+    private ComparableQuintuple(final Quintuple<T, U, V, W, X> quintuple,
+                                final Comparator<T> firstComparator,
+                                final Comparator<U> secondComparator,
+                                final Comparator<V> thirdComparator,
+                                final Comparator<W> fourthComparator,
+                                final Comparator<X> fifthComparator) {
+        this.origin = SimpleQuintuple.of(quintuple);
+        this.firstComparator = firstComparator;
+        this.secondComparator = secondComparator;
+        this.thirdComparator = thirdComparator;
+        this.fourthComparator = fourthComparator;
+        this.fifthComparator = fifthComparator;
+    }
+
     public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>, X extends Comparable<X>> ComparableQuintuple<T, U, V, W, X> of(final T first,
                                                                                                                                                                                       final U second,
                                                                                                                                                                                       final V third,
@@ -49,6 +63,19 @@ public final class ComparableQuintuple<T extends Comparable<T>, U extends Compar
                                                                                                                                                                                       final Comparator<W> fourthComparator,
                                                                                                                                                                                       final Comparator<X> fifthComparator) {
         return new ComparableQuintuple<>(first, second, third, fourth, fifth, firstComparator, secondComparator, thirdComparator, fourthComparator, fifthComparator);
+    }
+
+    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>, X extends Comparable<X>> ComparableQuintuple<T, U, V, W, X> of(final Quintuple<T, U, V, W, X> quintuple) {
+        return new ComparableQuintuple<>(quintuple, Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder());
+    }
+
+    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>, X extends Comparable<X>> ComparableQuintuple<T, U, V, W, X> of(final Quintuple<T, U, V, W, X> quintuple,
+                                                                                                                                                                                      final Comparator<T> firstComparator,
+                                                                                                                                                                                      final Comparator<U> secondComparator,
+                                                                                                                                                                                      final Comparator<V> thirdComparator,
+                                                                                                                                                                                      final Comparator<W> fourthComparator,
+                                                                                                                                                                                      final Comparator<X> fifthComparator) {
+        return new ComparableQuintuple<>(quintuple, firstComparator, secondComparator, thirdComparator, fourthComparator, fifthComparator);
     }
 
     @Override
@@ -126,4 +153,11 @@ public final class ComparableQuintuple<T extends Comparable<T>, U extends Compar
         }
         return fifthComparator.compare(fifth(), o.fifth());
     }
+
+
+    public Comparator<T> getFirstComparator() { return firstComparator ;}
+    public Comparator<U> getSecondComparator() { return secondComparator ;}
+    public Comparator<V> getThirdComparator() { return thirdComparator ;}
+    public Comparator<W> getFourthComparator() { return fourthComparator ;}
+    public Comparator<X> getFifthComparator() { return fifthComparator ;}
 }

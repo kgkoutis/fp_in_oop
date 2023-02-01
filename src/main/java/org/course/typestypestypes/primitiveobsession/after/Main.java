@@ -1,7 +1,7 @@
 package org.course.typestypestypes.primitiveobsession.after;
 
-import org.reusable.tuples.pair.Pair;
-import org.reusable.tuples.pair.Pairs;
+import org.reusable.tuples.pairs.Pair;
+import org.reusable.tuples.pairs.Pairs;
 
 /**
  * We turned the DepartmentCode class into an important abstraction which is an IMMUTABLE VALUE OBJECT, otherwise known as RECORD

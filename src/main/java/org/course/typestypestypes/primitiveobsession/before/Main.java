@@ -1,8 +1,8 @@
 package org.course.typestypestypes.primitiveobsession.before;
 
 import org.course.typestypestypes.primitiveobsession.before.Helpers.*;
-import org.reusable.tuples.pair.Pair;
-import org.reusable.tuples.pair.Pairs;
+import org.reusable.tuples.pairs.Pair;
+import org.reusable.tuples.pairs.Pairs;
 
 /**
  * There are 2 big issues (that cause all sort of code smells) in this codebase. It can be said that it is simply a mess.

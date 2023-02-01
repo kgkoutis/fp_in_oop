@@ -1,4 +1,4 @@
-package org.reusable.tuples.pair;
+package org.reusable.tuples.pairs;
 
 import java.util.function.Function;
 

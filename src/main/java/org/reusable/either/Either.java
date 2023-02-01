@@ -28,13 +28,9 @@ public abstract class Either<L, R> {
         return !this.isLeft();
     }
 
-    public <V> Either<L, V> map(final Function<R, V> forRight) {
+    public <V> Either<L, V> mapRight(final Function<R, V> forRight) {
         final EitherMapVisitor<L, R, V> visitor = new EitherMapVisitor<>(forRight);
         return this.accept(visitor);
-    }
-
-    public <V> Either<L, V> mapRight(final Function<R, V> forRight) {
-        return this.map(forRight);
     }
 
     public <V> Either<V, R> mapLeft(final Function<L, V> forLeft) {
@@ -42,13 +38,9 @@ public abstract class Either<L, R> {
         return this.accept(visitor);
     }
 
-    public <V> Either<L, V> bind(final Function<R, Either<L, V>> forRight) {
-        final EitherBindVisitor<L, R, V> visitor = new EitherBindVisitor<>(forRight);
-        return this.accept(visitor);
-    }
-
     public <V> Either<L, V> bindRight(final Function<R, Either<L, V>> forRight) {
-        return this.bind(forRight);
+        final EitherBindRightVisitor<L, R, V> visitor = new EitherBindRightVisitor<>(forRight);
+        return this.accept(visitor);
     }
 
     public <V> Either<V, R> bindLeft(final Function<L, Either<V, R>> forLeft) {
@@ -97,6 +89,12 @@ public abstract class Either<L, R> {
             return Unit.get();
         };
         final EitherIfLeftRightVisitor<L, R> visitor = new EitherIfLeftRightVisitor<>(applierLeft, applierRight);
+        return this.accept(visitor);
+    }
+
+    public <T> T match(final Function<L, T> forLeft,
+                       final Function<R, T> forRight) {
+        final EitherMatchVisitor<L, R, T> visitor = new EitherMatchVisitor<>(forLeft, forRight);
         return this.accept(visitor);
     }
 }

@@ -1,4 +1,4 @@
-package org.reusable.tuples.quadruple;
+package org.reusable.tuples.quadruples;
 
 import java.util.function.Function;
 
@@ -36,7 +36,8 @@ public interface Quadruple<T, U, V, W> {
     }
 
     default <X, Y, Z, A> Quadruple<X, Y, Z, A> map(final Quadruple<Function<T, X>, Function<U, Y>, Function<V, Z>, Function<W, A>> quadruple) {
-        return Quadruples.of(quadruple.first().apply(first()), quadruple.second().apply(second()), quadruple.third().apply(third()), quadruple.fourth().apply(fourth()));
+        return Quadruples.of(quadruple.first().apply(first()), quadruple.second().apply(second()), quadruple.third()
+                .apply(third()), quadruple.fourth().apply(fourth()));
     }
 
     default <X, Y, Z, A> Quadruple<X, Y, Z, A> bindFirst(final Function<T, Quadruple<X, Y, Z, A>> f) {

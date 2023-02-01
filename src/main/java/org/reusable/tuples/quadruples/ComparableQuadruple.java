@@ -1,4 +1,4 @@
-package org.reusable.tuples.quadruple;
+package org.reusable.tuples.quadruples;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -26,6 +26,18 @@ public final class ComparableQuadruple<T extends Comparable<T>, U extends Compar
         this.fourthComparator = fourthComparator;
     }
 
+    private ComparableQuadruple(final Quadruple<T, U, V, W> other,
+                                final Comparator<T> firstComparator,
+                                final Comparator<U> secondComparator,
+                                final Comparator<V> thirdComparator,
+                                final Comparator<W> fourthComparator) {
+        this.origin = SimpleQuadruple.of(other.first(), other.second(), other.third(), other.fourth());
+        this.firstComparator = firstComparator;
+        this.secondComparator = secondComparator;
+        this.thirdComparator = thirdComparator;
+        this.fourthComparator = fourthComparator;
+    }
+
     public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> ComparableQuadruple<T, U, V, W> of(final T first,
                                                                                                                                                           final U second,
                                                                                                                                                           final V third,
@@ -42,6 +54,18 @@ public final class ComparableQuadruple<T extends Comparable<T>, U extends Compar
                                                                                                                                                           final Comparator<V> thirdComparator,
                                                                                                                                                           final Comparator<W> fourthComparator) {
         return new ComparableQuadruple<>(first, second, third, fourth, firstComparator, secondComparator, thirdComparator, fourthComparator);
+    }
+
+    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> ComparableQuadruple<T, U, V, W> of(final Quadruple<T, U, V, W> other) {
+        return new ComparableQuadruple<>(other, Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder());
+    }
+
+    public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> ComparableQuadruple<T, U, V, W> of(final Quadruple<T, U, V, W> other,
+                                                                                                                                                          final Comparator<T> firstComparator,
+                                                                                                                                                          final Comparator<U> secondComparator,
+                                                                                                                                                          final Comparator<V> thirdComparator,
+                                                                                                                                                          final Comparator<W> fourthComparator) {
+        return new ComparableQuadruple<>(other, firstComparator, secondComparator, thirdComparator, fourthComparator);
     }
 
 
@@ -109,4 +133,10 @@ public final class ComparableQuadruple<T extends Comparable<T>, U extends Compar
                 ", origin=" + origin +
                 '}';
     }
+
+    public Comparator<T> getFirstComparator() { return firstComparator ;}
+    public Comparator<U> getSecondComparator() { return secondComparator ;}
+    public Comparator<V> getThirdComparator() { return thirdComparator ;}
+    public Comparator<W> getFourthComparator() { return fourthComparator ;}
+
 }

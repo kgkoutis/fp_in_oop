@@ -6,10 +6,10 @@ import org.reusable.either.Right;
 
 import java.util.function.Function;
 
-public final class EitherBindVisitor<L, R, V> implements EitherVisitor<L, R, Either<L, V>> {
+public final class EitherBindRightVisitor<L, R, V> implements EitherVisitor<L, R, Either<L, V>> {
     private final Function<R, Either<L, V>> forRight;
 
-    public EitherBindVisitor(final Function<R, Either<L, V>> forRight) {
+    public EitherBindRightVisitor(final Function<R, Either<L, V>> forRight) {
         this.forRight = forRight;
     }
 

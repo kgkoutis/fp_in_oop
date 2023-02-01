@@ -5,6 +5,7 @@ import org.reusable.maybe.visitors.*;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.Optional;
 
 public abstract class Maybe<T> {
     public abstract <R> R accept(MaybeVisitor<T, R> visitor);
@@ -17,7 +18,7 @@ public abstract class Maybe<T> {
     }
 
     public static <T> Maybe<T> nothing() {
-        return new Nothing<>();
+        return Nothing.<T>get();
     }
 
     public static <T> Maybe<T> of(final T value) {
@@ -25,6 +26,33 @@ public abstract class Maybe<T> {
             return nothing();
         }
         return just(value);
+    }
+
+
+    public Unit handle(final Consumer<? super T> f,
+                       final Runnable none) {
+        if (this.isJust()) {
+            f.accept(getValue());
+        } else {
+            none.run();
+        }
+        return Unit.get();
+    }
+
+    public <R> R match(final Function<? super T, R> f,
+                       final R noneValue) {
+        if (this.isJust()) {
+            return f.apply(getValue());
+        } else {
+            return noneValue;
+        }
+    }
+
+    /**
+     * @return the value of this Maybe if it is a Just, otherwise throws an exception
+     */
+    private T getValue() {
+        return ((Just<T>) this).getValue();
     }
 
     //------ extend with visitors ------------
@@ -76,23 +104,8 @@ public abstract class Maybe<T> {
         final MaybeIfNothingVisitor<T> visitor = new MaybeIfNothingVisitor<>(applier);
         return this.accept(visitor);
     }
-
-    public Unit handle(final Consumer<? super T> f,
-                       final Runnable none) {
-        if (this.isJust()) {
-            f.accept(((Just<T>) this).getValue());
-        } else {
-            none.run();
-        }
-        return Unit.get();
-    }
-
-    public <R> R match(final Function<? super T, R> f,
-                       final R noneValue) {
-        if (this.isJust()) {
-            return f.apply(((Just<T>) this).getValue());
-        } else {
-            return noneValue;
-        }
+    public Optional<T> toOptional() {
+        final MaybeToOptionalVisitor<T> visitor = new MaybeToOptionalVisitor<>();
+        return this.accept(visitor);
     }
 }

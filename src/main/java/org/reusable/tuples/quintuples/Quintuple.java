@@ -36,12 +36,15 @@ public interface Quintuple<T, U, V, W, X> {
     default <Y, Z, A, B> Quintuple<Y, Z, A, B, X> map(final Function<T, Y> mapFirst,
                                                       final Function<U, Z> mapSecond,
                                                       final Function<V, A> mapThird,
-                                                      final Function<W, B> mapFourth) {
-        return Quintuples.of(mapFirst.apply(first()), mapSecond.apply(second()), mapThird.apply(third()), mapFourth.apply(fourth()), fifth());
+                                                      final Function<W, B> mapFourth,
+                                                      final Function<X, X> mapFifth
+    ) {
+        return Quintuples.of(mapFirst.apply(first()), mapSecond.apply(second()), mapThird.apply(third()), mapFourth.apply(fourth()), mapFifth.apply(fifth()));
     }
 
     default <Y, Z, A, B> Quintuple<Y, Z, A, B, X> map(final Quintuple<Function<T, Y>, Function<U, Z>, Function<V, A>, Function<W, B>, Function<X, X>> quintuple) {
-        return Quintuples.of(quintuple.first().apply(first()), quintuple.second().apply(second()), quintuple.third().apply(third()), quintuple.fourth().apply(fourth()), quintuple.fifth().apply(fifth()));
+        return Quintuples.of(quintuple.first().apply(first()), quintuple.second().apply(second()), quintuple.third()
+                .apply(third()), quintuple.fourth().apply(fourth()), quintuple.fifth().apply(fifth()));
     }
 
     default <Y, Z, A, B> Quintuple<Y, Z, A, B, X> bindFirst(final Function<T, Quintuple<Y, Z, A, B, X>> f) {

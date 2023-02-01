@@ -28,15 +28,15 @@ public class MainWithResult {
         final Result<List<String>, Throwable> animals2 = getResult(List.of("Dog", "Cat", "Bird", "Fish", "Snake", "Lizard", "Turtle", "Rabbit", "Horse", "Cow"));
 
         // first way to handle result
-        final Optional<Map<Integer, List<String>>> ss = animals2
+        final Optional<Map<Integer, List<String>>> optional = animals2
                 .matchSuccess(
                         success -> success
                                 .stream()
                                 .map(String::toUpperCase)
                                 .collect(groupingBy(String::length)));
 
-        if (ss.isPresent()) {
-            ss.get().forEach((length, strings) -> System.out.println(length + " -> " + strings));
+        if (optional.isPresent()) {
+            optional.get().forEach((length, strings) -> System.out.println(length + " -> " + strings));
         } else {
             System.out.println("Error reading file: " + animals2.throwable().getMessage());
         }

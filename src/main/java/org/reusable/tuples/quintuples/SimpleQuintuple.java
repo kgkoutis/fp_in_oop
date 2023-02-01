@@ -21,6 +21,10 @@ public final class SimpleQuintuple<T, U, V, W, X> implements Quintuple<T, U, V, 
         this.fifth = fifth;
     }
 
+    private SimpleQuintuple(final Quintuple<T, U, V, W, X> quintuple) {
+        this(quintuple.first(), quintuple.second(), quintuple.third(), quintuple.fourth(), quintuple.fifth());
+    }
+
     public T first() {
         return first;
     }
@@ -47,6 +51,10 @@ public final class SimpleQuintuple<T, U, V, W, X> implements Quintuple<T, U, V, 
                                                                     final W fourth,
                                                                     final X fifth) {
         return new SimpleQuintuple<>(first, second, third, fourth, fifth);
+    }
+
+    public static <T, U, V, W, X> SimpleQuintuple<T, U, V, W, X> of(final Quintuple<T, U, V, W, X> quintuple) {
+        return new SimpleQuintuple<>(quintuple);
     }
 
     @Override

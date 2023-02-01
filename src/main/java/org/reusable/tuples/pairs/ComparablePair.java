@@ -1,4 +1,4 @@
-package org.reusable.tuples.pair;
+package org.reusable.tuples.pairs;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -17,6 +17,14 @@ public final class ComparablePair<T extends Comparable<T>, V extends Comparable<
         this.secondComparator = secondComparator;
     }
 
+    private ComparablePair(final Pair<T, V> pair,
+                           final Comparator<T> firstComparator,
+                           final Comparator<V> secondComparator) {
+        this.origin = SimplePair.of(pair.first(), pair.second());
+        this.firstComparator = firstComparator;
+        this.secondComparator = secondComparator;
+    }
+
     public static <T extends Comparable<T>, V extends Comparable<V>> ComparablePair<T, V> of(final T first,
                                                                                              final V second) {
         return new ComparablePair<>(first, second, Comparator.naturalOrder(), Comparator.naturalOrder());
@@ -27,6 +35,16 @@ public final class ComparablePair<T extends Comparable<T>, V extends Comparable<
                                                                                              final Comparator<T> firstComparator,
                                                                                              final Comparator<V> secondComparator) {
         return new ComparablePair<>(first, second, firstComparator, secondComparator);
+    }
+
+    public static <T extends Comparable<T>, V extends Comparable<V>> ComparablePair<T, V> of(final Pair<T, V> pair) {
+        return new ComparablePair<>(pair, Comparator.naturalOrder(), Comparator.naturalOrder());
+    }
+
+    public static <T extends Comparable<T>, V extends Comparable<V>> ComparablePair<T, V> of(final Pair<T, V> pair,
+                                                                                             final Comparator<T> firstComparator,
+                                                                                             final Comparator<V> secondComparator) {
+        return new ComparablePair<>(pair, firstComparator, secondComparator);
     }
 
     @Override
@@ -70,4 +88,7 @@ public final class ComparablePair<T extends Comparable<T>, V extends Comparable<
     public V second() {
         return origin.second();
     }
+
+    public Comparator<T> getFirstComparator() { return firstComparator ;}
+    public Comparator<V> getSecondComparator() { return secondComparator ;}
 }

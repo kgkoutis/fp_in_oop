@@ -11,9 +11,9 @@ public final class Result<V, E extends Throwable> {
     private final E throwable;
     private final boolean isSuccess;
 
-    public Result(final V value,
-                  final E throwable,
-                  final boolean isSuccess) {
+    private Result(final V value,
+                   final E throwable,
+                   final boolean isSuccess) {
         this.value = value;
         this.throwable = throwable;
         this.isSuccess = isSuccess;
@@ -96,6 +96,11 @@ public final class Result<V, E extends Throwable> {
     }
 
     public V value() {
+        if (!this.isSuccess) {
+            sneakyThrow(this.throwable);
+            return null;
+        }
+
         return value;
     }
 
@@ -105,6 +110,10 @@ public final class Result<V, E extends Throwable> {
 
     public boolean isSuccess() {
         return isSuccess;
+    }
+
+    public boolean isFailure() {
+        return !isSuccess;
     }
 
     @Override
