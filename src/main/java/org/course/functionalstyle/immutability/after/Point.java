@@ -1,5 +1,7 @@
 package org.course.functionalstyle.immutability.after;
 
+import java.util.Objects;
+
 /**
  * This could be a record in later Java versions.
  */
@@ -8,15 +10,19 @@ public final class Point {
 
     public Point(final Integer x,
                  final Integer y) {
+        Objects.requireNonNull(x);
+        Objects.requireNonNull(y);
         this.x = x;
         this.y = y;
     }
 
-    public Point move(Integer x,
-                      Integer y) {
-        if (x == null) x = 0;
-        if (y == null) y = 0;
-        return new Point(this.x + x, this.y + y);
+    public Point move(final Integer x,
+                      final Integer y) {
+        int newX = this.x;
+        int newY = this.y;
+        if (x != null) newX = this.x + x;
+        if (y != null) newY = this.y + y;
+        return new Point(newX, newY);
     }
 
     private Point(final Point other) {
@@ -28,11 +34,12 @@ public final class Point {
         return new Point(this);
     }
 
-    public Point with(Integer x,
-                      Integer y) {
-        x = x == null ? this.x : x;
-        y = y == null ? this.y : y;
-        return new Point(x, y);
+    public Point withX(final Integer x) {
+        return new Point(x, this.y);
+    }
+
+    public Point withY(final Integer y) {
+        return new Point(this.x, y);
     }
 
     @Override

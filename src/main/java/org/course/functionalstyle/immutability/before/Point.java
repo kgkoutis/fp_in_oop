@@ -1,10 +1,14 @@
 package org.course.functionalstyle.immutability.before;
 
+import java.util.Objects;
+
 public final class Point {
     public Integer x, y;
 
     public Point(final Integer x,
                  final Integer y) {
+        Objects.requireNonNull(x);
+        Objects.requireNonNull(y);
         this.x = x;
         this.y = y;
     }

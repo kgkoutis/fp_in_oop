@@ -20,10 +20,10 @@ import java.util.function.Supplier;
  * var f = () -> { x = 1; }; // lazy (or deferred) evaluation, x is not set now, but it will be set whenever f is called
  * <p>
  * What is the main advantage of lazy evaluation? (think)
- * What is the main of lazy evaluation? (think)
+ * What is the main disadvantage of lazy evaluation? (think)
  * <p>
  * This class has concurrency issues. The dbConnection is a shared resource and multiple threads try to initialize it.
- * We would like to a) initialize it only once, lazily and b) let it be tolerant to thread race condition, when
+ * We would like to a) initialize it lazily, only once and b) let it be tolerant to thread race condition, when
  * multiple threads try to initialize it at the same time. Only the first thread should initialize it, the rest should obtain the instance
  * that was already initialized.
  * <p>

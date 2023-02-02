@@ -18,6 +18,12 @@ public class Main {
         final Point p2 = p1.move(3, 4);
         System.out.println(p1);
         System.out.println(p2);
+
+        // extra
+        final Point p3 = p1.withX(5); // substitution of X
+        System.out.println(p3);
+        final Point p4 = p1.withY(6); // substitution of Y
+        System.out.println(p4);
     }
 }
 
