@@ -1,14 +1,14 @@
 package org.course.composability.dependencyinjection.functionalfactories.before;
 
 public final class Options {
-    private final boolean isVerbose;
+    private final LoggerLevel loggerLevel;
     private final int maxLinesOutput;
     private final String outputFileName;
 
-    public Options(final boolean isVerbose,
+    public Options(final LoggerLevel loggerLevel,
                    final int maxLinesOutput,
                    final String outputFileName) {
-        this.isVerbose = isVerbose;
+        this.loggerLevel = loggerLevel;
         this.maxLinesOutput = maxLinesOutput;
         this.outputFileName = outputFileName;
     }
@@ -16,7 +16,7 @@ public final class Options {
     @Override
     public String toString() {
         return "Options{" +
-                "isVerbose=" + isVerbose +
+                "loggerLevel=" + loggerLevel +
                 ", maxLinesOutput=" + maxLinesOutput +
                 ", outputFileName='" + outputFileName + '\'' +
                 '}';

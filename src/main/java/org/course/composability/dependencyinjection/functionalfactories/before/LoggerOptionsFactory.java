@@ -1,16 +1,16 @@
 package org.course.composability.dependencyinjection.functionalfactories.before;
 
 public final class LoggerOptionsFactory {
-    private final boolean isVerbose;
+    private final LoggerLevel loggerLevel;
     private final int maxLinesOutput;
     private final String outputFileName;
 
-    public LoggerOptionsFactory(final boolean isVerbose,
+    public LoggerOptionsFactory(final LoggerLevel loggerLevel,
                                 final int maxLinesOutput,
                                 final String outputFileName) {
-        this.isVerbose = isVerbose;
-        if (maxLinesOutput < 0 || maxLinesOutput > 100) {
-            throw new IllegalArgumentException("maxLinesOutput must be >= 0 and <= 100");
+        this.loggerLevel = loggerLevel;
+        if (maxLinesOutput < 0 || maxLinesOutput > 10000) {
+            throw new IllegalArgumentException("maxLinesOutput must be >= 0 and <= 10000");
         }
         this.maxLinesOutput = maxLinesOutput;
         if (outputFileName == null || outputFileName.isEmpty()) {
@@ -20,7 +20,7 @@ public final class LoggerOptionsFactory {
     }
 
     public Options create() {
-        return new Options(isVerbose, maxLinesOutput, outputFileName);
+        return new Options(loggerLevel, maxLinesOutput, outputFileName);
     }
 }
 
