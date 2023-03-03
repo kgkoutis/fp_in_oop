@@ -3,6 +3,7 @@ package org.course.functionalstyle.streams.after;
 import org.reusable.throwing.ThrowingFunction;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -34,7 +35,7 @@ import static java.util.stream.Collectors.groupingBy;
  */
 public class MainWithThrowingFunction {
     public static void main(final String[] args) {
-        final List<String> animals = List.of("Dog", "Cat", "Bird", "Fish", "Snake", "Lizard", "Turtle", "Rabbit", "Horse", "Cow");
+        final List<String> animals = new ArrayList<String>() {{ add("Dog"); add("Cat"); add("Bird"); add("Fish"); add("Snake"); add("Lizard"); add("Turtle"); add("Rabbit"); add("Horse"); add("Cow"); }};
 
         try {
             animals.stream()

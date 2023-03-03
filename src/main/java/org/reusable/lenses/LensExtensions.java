@@ -186,7 +186,7 @@ public class LensExtensions {
 
             final Iterator<A> aIterator = Spliterators.iterator(aSpliterator);
             final Iterator<B> bIterator = Spliterators.iterator(bSpliterator);
-            final Iterator<C> cIterator = new Iterator<>() {
+            final Iterator<C> cIterator = new Iterator<C>() {
                 @Override
                 public boolean hasNext() {
                     return aIterator.hasNext() && bIterator.hasNext();

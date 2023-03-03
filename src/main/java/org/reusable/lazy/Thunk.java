@@ -28,7 +28,7 @@ public final class Thunk<T> implements Supplier<T> {
 
     private synchronized T evaluate(final Supplier<T> expression) {
         if (!(this.holder instanceof Thunk.Holder)) {
-            final var evaluated = expression.get();
+            final T evaluated = expression.get();
             this.holder = new Holder<>(evaluated);
         }
         return this.holder.get();
@@ -44,7 +44,7 @@ public final class Thunk<T> implements Supplier<T> {
     }
 
     public static <V> Thunk<V> of(final Supplier<V> expression) {
-        if (expression instanceof Thunk<V>) {
+        if (expression instanceof Thunk<?>) {
             return (Thunk<V>) expression;
         }
         return new Thunk<>(expression);

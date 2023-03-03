@@ -3,6 +3,7 @@ package org.course.functionalstyle.streams.after;
 import org.reusable.Result;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -25,7 +26,7 @@ import static java.util.stream.Collectors.groupingBy;
 public class MainWithResult {
     public static void main(final String[] args) {
 
-        final Result<List<String>, Throwable> animals2 = getResult(List.of("Dog", "Cat", "Bird", "Fish", "Snake", "Lizard", "Turtle", "Rabbit", "Horse", "Cow"));
+        final Result<List<String>, Throwable> animals2 = getResult(new ArrayList<String>() {{ add("Dog"); add("Cat"); add("Bird"); add("Fish"); add("Snake"); add("Lizard"); add("Turtle"); add("Rabbit"); add("Horse"); add("Cow"); }});
 
         // first way to handle result
         final Optional<Map<Integer, List<String>>> optional = animals2

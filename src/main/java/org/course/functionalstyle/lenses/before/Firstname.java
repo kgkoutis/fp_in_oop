@@ -21,7 +21,7 @@ public final class Firstname {
     public boolean equals(final Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        final var that = (Firstname) obj;
+        final Firstname that = (Firstname) obj;
         return Objects.equals(this.value, that.value);
     }
 

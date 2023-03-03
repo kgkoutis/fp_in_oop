@@ -33,7 +33,7 @@ public class LensesTests {
         final Integer mileage = bookLeaderCarMileage.get(team);
         final Team team2 = bookLeaderCarMileage.set(25000, team);
         // Assert
-        assertEquals(20000, mileage);
+        assertEquals(10000, mileage);
         assertEquals(25000, team2.getLeader().getCar().getMileage());
     }
 

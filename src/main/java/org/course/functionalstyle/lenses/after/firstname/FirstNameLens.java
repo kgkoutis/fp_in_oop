@@ -29,7 +29,7 @@ public final class FirstNameLens {
     }
 
     public Function<Firstname, Firstname> update(final Function<String, String> f) {
-        final var self = this;
+        final FirstNameLens self = this;
         return a -> self.set(f.apply(self.getF.apply(a)), a);
     }
 

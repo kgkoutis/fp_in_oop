@@ -120,7 +120,7 @@ public final class Result<V, E extends Throwable> {
     public boolean equals(final Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        final var that = (Result) obj;
+        final Result that = (Result) obj;
         return Objects.equals(this.value, that.value) &&
                 Objects.equals(this.throwable, that.throwable) &&
                 this.isSuccess == that.isSuccess;

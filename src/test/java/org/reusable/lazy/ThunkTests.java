@@ -30,7 +30,7 @@ public class ThunkTests {
         final List<Thread> threads = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            final var thread = new Thread(() -> {
+            final Thread thread = new Thread(() -> {
                 // slight delay to make sure all threads are started
                 try {
                     Thread.sleep(1000);

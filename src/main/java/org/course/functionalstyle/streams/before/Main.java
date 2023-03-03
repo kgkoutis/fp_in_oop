@@ -30,7 +30,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Main {
     public static void main(final String[] args) throws IOException {
         try {
-            final List<String> animals = List.of("Dog", "Cat", "Bird", "Fish", "Snake", "Lizard", "Turtle", "Rabbit", "Horse", "Cow");
+            final List<String> animals = new ArrayList<String>() {{ add("Dog"); add("Cat"); add("Bird"); add("Fish"); add("Snake"); add("Lizard"); add("Turtle"); add("Rabbit"); add("Horse"); add("Cow"); }};
 
             // group strings by length imperatively
             final Map<Integer, List<String>> map = new HashMap<>();

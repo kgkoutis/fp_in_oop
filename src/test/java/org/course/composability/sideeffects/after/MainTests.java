@@ -44,7 +44,12 @@ class MainTests {
                 final Person p2 = new Person(UUID.fromString("6223a2e6-7d04-46ef-82cb-4b1116c989a8"), 10);
                 final Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 30);
                 final Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 25);
-                this.persons = List.of(p1, p2, p3, p4);
+                this.persons = new ArrayList<Person> () {{
+                    add(p1);
+                    add(p2);
+                    add(p3);
+                    add(p4);
+                }};
             }
 
             @Test
@@ -126,7 +131,12 @@ class MainTests {
                 final Person p2 = new Person(UUID.fromString("6223a2e6-7d04-46ef-82cb-4b1116c989a8"), 10);
                 final Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 20);
                 final Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 20);
-                this.persons = List.of(p1, p2, p3, p4);
+                this.persons = new ArrayList<Person>() {{
+                    add(p1);
+                    add(p2);
+                    add(p3);
+                    add(p4);
+                }};
             }
 
             @Test
@@ -209,7 +219,12 @@ class MainTests {
                 final Person p2 = new Person(UUID.fromString("6223a2e6-7d04-46ef-82cb-4b1116c989a8"), 30);
                 final Person p3 = new Person(UUID.fromString("5376de6c-7ecc-4aa3-a200-984a042e99a9"), 10);
                 final Person p4 = new Person(UUID.fromString("b96599db-61c7-46f4-a537-b8a22736fd00"), 20);
-                this.persons = List.of(p1, p2, p3, p4);
+                this.persons = new ArrayList<Person>() {{
+                    add(p1);
+                    add(p2);
+                    add(p3);
+                    add(p4);
+                }};
             }
 
             @Test
@@ -333,7 +348,7 @@ class MainTests {
 
                 @BeforeEach
                 void createNewListWithOneOfPersonsEqualToNull() {
-                    this.persons = List.of();
+                    this.persons = new ArrayList<Person>();
                 }
 
                 @Test

@@ -32,7 +32,7 @@ public class Main {
         final List<Thread> threads = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            final var thread = new Thread(() -> tryInitializeDbConnection(initializeDbConnectionThunk));
+            final Thread thread = new Thread(() -> tryInitializeDbConnection(initializeDbConnectionThunk));
             threads.add(thread);
         }
         // Start the threads

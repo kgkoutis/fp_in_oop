@@ -30,7 +30,7 @@ public final class Lens<A, B> {
     }
 
     public Function<A, A> update(final Function<B, B> f) {
-        final var self = this;
+        final Lens<A,B> self = this;
         return a -> self.set(f.apply(self.getF.apply(a)), a);
     }
 

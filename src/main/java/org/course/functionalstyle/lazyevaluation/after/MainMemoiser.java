@@ -37,7 +37,7 @@ public class MainMemoiser {
         final List<Thread> threads = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            final var thread = new Thread(() -> tryInitializeDbConnection(initializeDbConnection));
+            final Thread thread = new Thread(() -> tryInitializeDbConnection(initializeDbConnection));
             threads.add(thread);
         }
         // Start the threads

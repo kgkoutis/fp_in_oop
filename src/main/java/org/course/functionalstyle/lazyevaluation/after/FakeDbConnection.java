@@ -17,7 +17,7 @@ public final class FakeDbConnection {
     public boolean equals(final Object obj) {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
-        final var that = (FakeDbConnection) obj;
+        final FakeDbConnection that = (FakeDbConnection) obj;
         return Objects.equals(this.currentThreadName, that.currentThreadName);
     }
 

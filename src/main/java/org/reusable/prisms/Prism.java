@@ -48,13 +48,13 @@ public final class Prism<A, B> {
     }
 
     public Function<A, A> update(final Function<B, B> f) {
-        final var self = this;
+        final Prism<A,B> self = this;
         return a -> self.getF.apply(a).map(v -> self.set(f.apply(v), a)).ifNothing(a);
     }
 
     public A update(final Function<B, B> f,
                     final A value) {
-        final var self = this;
+        final Prism<A,B> self = this;
         return getF.apply(value).map(v -> self.set(f.apply(v), value)).ifNothing(value);
     }
 

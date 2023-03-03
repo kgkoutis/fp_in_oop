@@ -32,7 +32,12 @@ public class Main {
             final Person p3 = new Person(UUID.randomUUID(), 30);
             final Person p4 = new Person(UUID.randomUUID(), 25);
 
-            return List.of(p1, p2, p3, p4);
+            return new ArrayList<Person>() {{
+                add(p1);
+                add(p2);
+                add(p3);
+                add(p4);
+            }};
         };
 
         final Consumer<List<Person>> saveInDB = personsRepository::insertPersons;

@@ -51,26 +51,26 @@ public class Main {
         }
         // switch expression for Pet pet
 
-        return switch (pet) {
-            case Cat cat -> "Meow";
-            case Dog dog -> "Woof";
-            case Parrot parrot -> "Siri, order me 10 boxes of pizza";
-            default -> throw new IllegalStateException("Unexpected pet: " + pet);
-        };
+//        return switch (pet) {
+//            case Cat cat -> "Meow";
+//            case Dog dog -> "Woof";
+//            case Parrot parrot -> "Siri, order me 10 boxes of pizza";
+//            default -> throw new IllegalStateException("Unexpected pet: " + pet);
+//        };
 
-        /* if this doesn't compile for you because you have lower version of Java
-        * comment it out and use this instead
-        *
-        * switch (pet) {
-        *    case Cat cat:
-        *        return "Meow";
-        *    case Dog dog:
-        *        return "Woof";
-        *    case Parrot parrot:
-        *        return "Siri, order me 10 boxes of pizza";
-        *    default:
-        *        throw new IllegalStateException("Unexpected pet: " + pet);
-        * }
-        */
+        if (pet instanceof Cat) {
+            return "Meow";
+        }
+
+        if (pet instanceof Dog) {
+            return "Woof";
+        }
+
+        if (pet instanceof Parrot) {
+            return "Siri, order me 10 boxes of pizza";
+        }
+
+        throw new IllegalStateException("Unexpected pet: " + pet);
+        
     }
 }
