@@ -42,7 +42,7 @@ public final class ComparableQuadruple<T extends Comparable<T>, U extends Compar
                                                                                                                                                           final U second,
                                                                                                                                                           final V third,
                                                                                                                                                           final W fourth) {
-        return new ComparableQuadruple<>(first, second, third, fourth, Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder());
+        return new ComparableQuadruple<T, U, V, W>(first, second, third, fourth, Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder());
     }
 
     public static <T extends Comparable<T>, U extends Comparable<U>, V extends Comparable<V>, W extends Comparable<W>> ComparableQuadruple<T, U, V, W> of(final T first,
