@@ -2,7 +2,7 @@ package org.course.typestypestypes.missingabstractions.before;
 
 /**
  * OOP and FP agree on the following:
- * it's all about abstractions. The design of your system suffers from verbosity and (worse) accidental complexity, especially if you miss an important abstraction.
+ * it's all about abstractions. The design of your system can suffer, especially if you miss an important abstraction.
  * <p>
  * Here it seems we missed the opportunity to introduce an important abstraction.
  * Where does this happen and how can we fix it?
