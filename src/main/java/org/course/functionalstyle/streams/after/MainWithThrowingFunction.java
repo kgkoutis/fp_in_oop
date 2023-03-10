@@ -3,26 +3,20 @@ package org.course.functionalstyle.streams.after;
 import org.reusable.throwing.ThrowingFunction;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.security.SecureRandom;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 import static java.util.stream.Collectors.groupingBy;
+import static org.reusable.Lists.listOf;
 
 /**
  * This is a simple example of how to use the ThrowingFunction interface.
  * <p>
- * This interface is a SAM and turns the checked exception of the original method (or lambda) into a RuntimeException.
- * One might say that it introduces the "proxy pattern" applied for a functional interface.
+ * This interface is a SAM interface and turns the checked exception of the original method into a RuntimeException.
  * <p>
- * What kind of problems does this cause in terms of:
- * a) philosophy of the language?
- * b) exception handling?
- * c) multiple exceptions?
- * <p>
- * Generally, this is NOT the best way to handle exceptions in a stream.
- * <p>
- * It is also a way which handles checked exceptions, which is only a Java feature, other languages don't encounter.
+ * Generally, this is a little against the philosophy of Java, which doesn't shy away from checked exceptions.
+ * Of course the idea of checked exceptions has been questioned many times the past years.
+ * Checked exceptions are only a Java feature, other languages don't have them.
  * <p>
  * There is also another method called sneakyThrows (shown next), which is basically a compiler hack and can be used to make checked exceptions
  * "invisible" to the compiler. The result would be the same as this example, you would write
@@ -35,7 +29,7 @@ import static java.util.stream.Collectors.groupingBy;
  */
 public class MainWithThrowingFunction {
     public static void main(final String[] args) {
-        final List<String> animals = new ArrayList<String>() {{ add("Dog"); add("Cat"); add("Bird"); add("Fish"); add("Snake"); add("Lizard"); add("Turtle"); add("Rabbit"); add("Horse"); add("Cow"); }};
+        final List<String> animals = listOf("Dog", "Cat", "Bird", "Fish", "Snake", "Lizard", "Turtle", "Rabbit", "Horse","Cow");
 
         try {
             animals.stream()
@@ -51,10 +45,11 @@ public class MainWithThrowingFunction {
 
     private static <T> T sometimesThrowsIOException(final T t) throws IOException {
         final int min = 0;
-        final int max = 10;
-        final int rnd = ThreadLocalRandom.current().nextInt(min, max + 1);
-        if (rnd < 1) {
-            throw new IOException("Random number goes boom");
+        final int max = 1000;
+        final SecureRandom random = new SecureRandom();
+        final int rnd = random.nextInt(max - min + 1) + min;
+        if (rnd < 3) {
+            throw new IOException("Random number goes boom it was: " + rnd);
         }
 
         return t;

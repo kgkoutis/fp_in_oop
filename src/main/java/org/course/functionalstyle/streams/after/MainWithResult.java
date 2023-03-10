@@ -3,13 +3,13 @@ package org.course.functionalstyle.streams.after;
 import org.reusable.Result;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static java.util.stream.Collectors.groupingBy;
+import static org.reusable.Lists.listOf;
 
 /**
  * This is a simple example of how to use the Result class. The Result class is a simple wrapper marking either the presence of a value
@@ -26,7 +26,7 @@ import static java.util.stream.Collectors.groupingBy;
 public class MainWithResult {
     public static void main(final String[] args) {
 
-        final Result<List<String>, Throwable> animals2 = getResult(new ArrayList<String>() {{ add("Dog"); add("Cat"); add("Bird"); add("Fish"); add("Snake"); add("Lizard"); add("Turtle"); add("Rabbit"); add("Horse"); add("Cow"); }});
+        final Result<List<String>, Throwable> animals2 = getResult(listOf("Dog","Cat","Bird","Fish","Snake","Lizard","Turtle","Rabbit","Horse","Cow"));
 
         // first way to handle result
         final Optional<Map<Integer, List<String>>> optional = animals2
@@ -66,9 +66,9 @@ public class MainWithResult {
 
     private static <T> T sometimesThrowsIOException(final T t) throws IOException {
         final int min = 0;
-        final int max = 10;
+        final int max = 1000;
         final int rnd = ThreadLocalRandom.current().nextInt(min, max + 1);
-        if (rnd < 1) {
+        if (rnd < 3) {
             throw new IOException("Random number goes boom");
         }
 

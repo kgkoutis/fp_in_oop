@@ -1,5 +1,6 @@
 package org.reusable.throwing;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 @FunctionalInterface
@@ -16,6 +17,7 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
     }
 
     static <T> Supplier<T> uncheck(final ThrowingSupplier<T> fn) {
+        Objects.requireNonNull(fn);
         return fn::get;
     }
 }

@@ -1,18 +1,20 @@
 package org.course.functionalstyle.streams.before;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
+
+import static org.reusable.Lists.listOf;
 
 /**
  * List Processing is a very common and fundamental task in FP. Lisp took its name for it, the pioneer of FP programming. It allows the programmer to express
  * the computations he/she wants to perform without writing for loops, while loops, if statements, etc and other low level imperative code.
  * Nowadays, all languages have some kind of list processing capabilities, in the form of map, filter, reduce, etc.
  * <p>
- * Streams are a new abstraction introduced in Java 8. They are a sequence of elements on which you can perform various operations.
+ * Streams are a new abstraction introduced in Java 8. They represent a sequence of elements on which you can perform various operations.
  * They involve a lot of functional programming concepts like declarative coding, immutability, laziness, function purity, "ease" of parallelization etc.
  * They go a level above list processing since they can be applied to any Collection, not just Lists.
  * <p>
@@ -30,7 +32,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Main {
     public static void main(final String[] args) throws IOException {
         try {
-            final List<String> animals = new ArrayList<String>() {{ add("Dog"); add("Cat"); add("Bird"); add("Fish"); add("Snake"); add("Lizard"); add("Turtle"); add("Rabbit"); add("Horse"); add("Cow"); }};
+            final List<String> animals = listOf("Dog", "Cat", "Bird", "Fish", "Snake", "Lizard", "Turtle", "Rabbit", "Horse", "Cow");
 
             // group strings by length imperatively
             final Map<Integer, List<String>> map = new HashMap<>();
@@ -61,10 +63,11 @@ public class Main {
 
     private static <T> T sometimesThrowsIOException(final T t) throws IOException {
         final int min = 0;
-        final int max = 10;
-        final int rnd = ThreadLocalRandom.current().nextInt(min, max + 1);
-        if (rnd < 1) {
-            throw new IOException("Random number goes boom");
+        final int max = 1000;
+        final SecureRandom random = new SecureRandom();
+        final int rnd = random.nextInt(max - min + 1) + min;
+        if (rnd < 3) {
+            throw new IOException("Random number goes boom it was: " + rnd);
         }
 
         return t;

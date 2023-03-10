@@ -1,32 +1,33 @@
 package org.course.composability.loanpattern.before;
 
-public final class StopWatch implements Resource {
+import static org.reusable.Threads.delay;
 
-    private final org.apache.commons.lang3.time.StopWatch stopWatch = new org.apache.commons.lang3.time.StopWatch();
+public final class StopWatch implements ResourceHolder {
+
+    private final org.apache.commons.lang3.time.StopWatch stopWatch;
 
     public StopWatch() {
-        System.out.println("Resource created");
+        System.out.println("ResourceHolder created");
+        System.out.println("Acquiring resource");
+        stopWatch = new org.apache.commons.lang3.time.StopWatch();  // simulate resource acquisition
+        stopWatch.reset();
         stopWatch.start();
     }
 
-    public String doSomething(final long waitTimeInMs) throws InterruptedException {
-        System.out.println("Resource is doing something");
-        Thread.sleep(waitTimeInMs);
-        return "Resource is done";
-    }
-
-    public String doSomethingElse(final long waitTimeInMs) throws InterruptedException {
-        System.out.println("Resource is doing something else");
-        Thread.sleep(waitTimeInMs);
-        return "Resource is done";
+    public String delayMs(final long waitTimeInMs) {
+        System.out.println("ResourceHolder is doing something");
+        delay(waitTimeInMs);
+        return "ResourceHolder is done";
     }
 
     @Override
-    public void close() throws Exception {
-        System.out.println("Resource is closed");
+    public void close() {
+        System.out.println("ResourceHolder is closed");
         stopWatch.stop();
         final long g = stopWatch.getTime();
-        System.out.println("Resource was used for " + g + "ms");
+        System.out.println("ResourceHolder was used for " + g + "ms");
+        System.out.println("Releasing resource");
+        stopWatch.reset(); // simulate resource release
     }
 }
 

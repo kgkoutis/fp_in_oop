@@ -16,12 +16,12 @@ public final class Point {
         this.y = y;
     }
 
-    public Point move(final Integer x,
-                      final Integer y) {
+    public Point move(final Integer dx,
+                      final Integer dy) {
         int newX = this.x;
         int newY = this.y;
-        if (x != null) newX = this.x + x;
-        if (y != null) newY = this.y + y;
+        if (dx != null) newX += dx;
+        if (dy != null) newY += dy;
         return new Point(newX, newY);
     }
 

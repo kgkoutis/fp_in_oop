@@ -6,6 +6,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import static org.reusable.Lists.listOf;
+
 /**
  * The code below behaves the same as the code in the before package. We have also written unit tests for the insertPersonsIntoStore method.
  * How does all this work? Well in the pureAndTestablePart method we have passed callbacks that are doing the same thing as the code in the before package.
@@ -32,12 +34,7 @@ public class Main {
             final Person p3 = new Person(UUID.randomUUID(), 30);
             final Person p4 = new Person(UUID.randomUUID(), 25);
 
-            return new ArrayList<Person>() {{
-                add(p1);
-                add(p2);
-                add(p3);
-                add(p4);
-            }};
+            return listOf(p1, p2, p3, p4);
         };
 
         final Consumer<List<Person>> saveInDB = personsRepository::insertPersons;

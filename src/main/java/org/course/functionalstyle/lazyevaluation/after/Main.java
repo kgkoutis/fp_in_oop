@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class Main {
 
-    static FakeDbConnection dbConnection = new FakeDbConnection("no current thread");
-    private static int counter;
+    private static FakeDbConnection dbConnection = new FakeDbConnection("no current thread");
+    private static int counter = 0;
 
     public static void main(final String[] args) {
 

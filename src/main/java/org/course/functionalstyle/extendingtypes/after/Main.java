@@ -1,39 +1,35 @@
 package org.course.functionalstyle.extendingtypes.after;
 
 /**
- * OOP approach: extend the type with the Decorator/Adapter/Proxy pattern.
- * Pros: a) the method can be inherited for inherited subclasses and b) you don't have to remember a class that extends your type, just hit dot and see
- * what methods are available from intellisense.
- * Cons: the logic is "baked in" the type.
+ * Functional approach: separate data from behavior. Which usually means: use a static method to "extend" the type.
+ * Pros: flexibility, you can use any static method you want as long as you have access to the desired state (:getBrand). The logic is not "baked in" to a type.
+ * Cons: the method is static and external to the type,
+ *              a) so you have to remember which is the helper class that can extend your type, although, what you most of the time remember is the method name,
+ *              b) subtypes may not know that they can use this method even if they know that they hail from the parent class,
+ *              c) The method leaseVehicle no longer accepts a ready-made type (i.e: LeasableVehicle) so the calling code (i.e. :main) cannot make assumptions in advance
+ *                 what kind of process will be performed on the vehicle.
+ * <p>
+ * How can we extend the type in a more OOP way, with and without using inheritance?
  */
+
 public class Main {
     public static void main(final String[] args) {
-        final WindExtender w = new WindExtender(new Wind(1));
-        printSpeed(w);
-        printSpeed2(w);
-        printSpeed3(w);
+        final Car car = new Car("Kia");
+        int days = 10;
+        leaseVehicle(car, days);
+
+        final Motorcycle motorcycle = new Motorcycle("Suzuki");
+        days = 20;
+        leaseVehicle(motorcycle, days);
+
+        final Boat boat = new Boat("Love Boat");
+        days = 30;
+        leaseVehicle(boat, days);
     }
 
-    private static void printSpeed(final WindExtender w) {
-        needWind(w);
-        final double kmsPerhr = w.getSpeedInKilometersPerHour(); // don't forget this!
-        System.out.println("Speed in kilometers Per Hour: " + kmsPerhr);
-    }
-
-    private static void printSpeed2(final WindExtender w) {
-        needWind(w);
-        final double kmsPerhr = w.getSpeedInKilometersPerHour(); // don't forget this!
-        System.out.println("Speed in kilometers Per Hour: " + kmsPerhr);
-    }
-
-    private static void printSpeed3(final WindExtender w) {
-        needWind(w);
-        final double kmsPerhr = w.getSpeedInKilometersPerHour(); // don't forget this!
-        System.out.println("Speed in kilometers Per Hour: " + kmsPerhr);
-    }
-
-    private static void needWind(final Wind w) {
-        //.... logic with wind...//
-        /* no operation */
+    private static void leaseVehicle(final Vehicle vehicle,
+                                     final int days) {
+        final String message = VehicleUtils.lease(vehicle, days); // don't forget this!
+        System.out.println(message);
     }
 }

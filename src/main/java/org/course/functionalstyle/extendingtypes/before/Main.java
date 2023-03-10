@@ -1,41 +1,32 @@
 package org.course.functionalstyle.extendingtypes.before;
 
 /**
- * Functional approach: separate data from behavior. Which usually means: use a static method to "extend" the type.
- * Pros: flexibility, you can use any static method you want as long as you have access to the desired state (:getSpeedInMetersPerSecond)
- * Cons: the method is static so a) it's logic cannot be inherited/reused into subclasses, if any b) you have to remember which is the class that can extend your type
+ * OOP approach: extend the type with the Decorator pattern.
+ * Pros: a) avoid inheritance and accept flexibly the type to decorate and
+ *       b) you don't have to remember a helper class that extends your type, just hit dot and see
+ *          what methods are available from intellisense.
+ * Cons: the logic is "baked in" the type.
+ *
+ * Question: What is the FP approach to extend a type? The answer is super simple.
  */
-
 public class Main {
     public static void main(final String[] args) {
-        final Wind w = new Wind(1);
-        printSpeed(w);
-        printSpeed2(w);
-        printSpeed3(w);
+        final LeasableVehicle car = new LeasableVehicle(new Car("Kia"));
+        int days = 10;
+        leaseVehicle(car, days);
+
+        final LeasableVehicle motorCycle = new LeasableVehicle(new Motorcycle("Suzuki"));
+        days = 20;
+        leaseVehicle(motorCycle, days);
+
+        final LeasableVehicle boat = new LeasableVehicle(new Boat("Love Boat"));
+        days = 30;
+        leaseVehicle(boat, days);
     }
 
-    private static void printSpeed(final Wind wind) {
-        needWind(wind);
-        final double kmsPerhr = WindHelper.getSpeedInKilometersPerHour(wind); // don't forget this!
-        System.out.println("Speed in kilometers Per Hour: " + kmsPerhr);
-    }
-
-    private static void printSpeed2(final Wind wind) {
-        needWind(wind);
-        final double kmsPerhr = WindHelper.getSpeedInKilometersPerHour(wind); // don't forget this!
-        System.out.println("Speed in kilometers Per Hour: " + kmsPerhr);
-    }
-
-    private static void printSpeed3(final Wind wind) {
-        needWind(wind);
-        final double kmsPerhr = WindHelper.getSpeedInKilometersPerHour(wind); // don't forget this!
-        System.out.println("Speed in kilometers Per Hour: " + kmsPerhr);
-    }
-
-
-    private static void needWind(final Wind w) {
-        //.... logic with wind...//
-        /* no operation */
+    private static void leaseVehicle(final LeasableVehicle leasableVehicle,
+                                     final int days) {
+        final String message = leasableVehicle.lease(days);
+        System.out.println(message);
     }
 }
-

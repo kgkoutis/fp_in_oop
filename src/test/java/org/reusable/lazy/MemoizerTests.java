@@ -41,7 +41,7 @@ public class MemoizerTests {
      * For the consumer and the function the logic is the same, so we only test the supplier.
      */
     @Test
-    public void cacheValue() throws InterruptedException {
+    public void cacheValue() {
         final Supplier<UUID> memoizer = Memoizer.memoize("cacheValue", UUID::randomUUID);
         final List<UUID> uuids = new CopyOnWriteArrayList<>();
 

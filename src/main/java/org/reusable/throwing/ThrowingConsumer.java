@@ -1,5 +1,6 @@
 package org.reusable.throwing;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 @FunctionalInterface
@@ -16,6 +17,7 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
     }
 
     static <T> Consumer<T> uncheck(final ThrowingConsumer<T> fn) {
+        Objects.requireNonNull(fn);
         return fn::accept;
     }
 }

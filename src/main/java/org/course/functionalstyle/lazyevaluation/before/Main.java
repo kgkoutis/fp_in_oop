@@ -2,6 +2,7 @@ package org.course.functionalstyle.lazyevaluation.before;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
 /**
@@ -17,7 +18,7 @@ import java.util.function.Supplier;
  * <p>
  * var x = 0;                // eager (or strict) evaluation, x is initialized now
  * x = 1;                    // eager (or strict) evaluation, x is set now
- * var f = () -> { x = 1; }; // lazy (or deferred) evaluation, x is not set now, but it will be set whenever f is called
+ * var f = () -> { x = 2; }; // lazy (or deferred) evaluation, x is not set now, but it will be set whenever f is called
  * <p>
  * What is the main advantage of lazy evaluation? (think)
  * What is the main disadvantage of lazy evaluation? (think)
@@ -32,27 +33,28 @@ import java.util.function.Supplier;
  */
 public class Main {
 
-    static FakeDbConnection dbConnection = new FakeDbConnection("no current thread");
-    private static int counter;
+    private static FakeDbConnection dbConnection = new FakeDbConnection("no current thread");
+    private static int counter = 0;
 
     public static void main(final String[] args) {
 
         final Supplier<FakeDbConnection> initializeDbConnection = () -> {
             counter++;
-            System.out.println("Counter: " + counter);
+//            System.out.println("Counter: " + counter);
             return new FakeDbConnection(Thread.currentThread().getName());
         };
 
         // Create 10 threads
         final List<Thread> threads = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 60; i++) {
             final Thread thread = new Thread(() -> tryInitializeDbConnection(initializeDbConnection));
             threads.add(thread);
         }
 
         // Start the threads
         threads.forEach(Thread::start);
+        System.out.println("counter: " + counter);
     }
 
     private static void tryInitializeDbConnection(final Supplier<FakeDbConnection> initializeDbConnection) {

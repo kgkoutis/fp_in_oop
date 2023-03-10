@@ -4,6 +4,8 @@ import java.util.*;
 
 import java.util.stream.Collectors;
 
+import static org.reusable.Lists.*;
+
 /**
  * This is a mini application that uses a database to store and retrieve data.
  * Person is a database model class.
@@ -25,10 +27,7 @@ public class Main {
         final Person p3 = new Person(UUID.randomUUID(), 30);
         final Person p4 = new Person(UUID.randomUUID(), 25);
 
-        final List<Person> persons = new ArrayList<Person>() {{ add(p1);
-            add(p2);
-            add(p3);
-            add(p4); }};
+        final List<Person> persons = listOf(p1, p2, p3, p4);
         insertPersonsIntoStore(persons, personsRepository);
         final UUID id = persons.get(0).getId();
         final Optional<Person> personFromRepository = personsRepository.getPerson(id);
@@ -42,6 +41,7 @@ public class Main {
 
     private static void insertPersonsIntoStore(List<Person> persons,
                                                final PersonsRepository personsRepository) {
+        // validate the input
         final boolean structurallyGood = persons != null &&
                 !persons.isEmpty() &&
                 persons.stream().allMatch(Objects::nonNull);
@@ -49,6 +49,7 @@ public class Main {
                 .map(Person::getAge)
                 .collect(Collectors.averagingDouble(i -> i)) > 20.0;
 
+        // do the database work
         if (ageAverageIsAbove20) {
             personsRepository.insertPersons(persons); // This is the side effect
         } else if (structurallyGood) {

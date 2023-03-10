@@ -16,14 +16,77 @@ public class Main {
     public static void main(final String[] args) {
         final Point p1 = new Point(1, 2);
         final Point p2 = p1.move(3, 4);
-        System.out.println(p1);
-        System.out.println(p2);
 
         // extra
         final Point p3 = p1.withX(5); // substitution of X
         System.out.println(p3);
         final Point p4 = p1.withY(6); // substitution of Y
         System.out.println(p4);
+
+        testThreadSafety();
+        testThreadSafetyBetter();
+    }
+
+    public static void testThreadSafety() {
+        System.out.println("Testing thread safety");
+        final Point p1 = new Point(1, 2);
+
+        final Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                p1.move(1, 1);
+            }
+        });
+
+        final Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                p1.move(1, 1);
+            }
+        });
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (final InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(p1);
+    }
+
+    public static void testThreadSafetyBetter() {
+        System.out.println("Testing thread safety better");
+        final Point p = new Point(1, 2);
+
+        final Point[] pt1 = {p};
+        final Point[] pt2 = {p};
+
+        final Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                final Point temp = pt1[0].move(1, 1);
+                pt1[0] = temp;
+            }
+        });
+
+        final Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                final Point temp = pt2[0].move(1, 1);
+                pt2[0] = temp;
+            }
+        });
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (final InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(pt1[0]);
+        System.out.println(pt2[0]);
     }
 }
 

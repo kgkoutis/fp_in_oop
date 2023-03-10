@@ -1,9 +1,10 @@
 ## Order of the chapters
 
-1. typescomposition (exercise)
+1. classcomposition (exercise)
 2. functioncomposition
-3. dependencyinjection/functionalfactories
-4. dependencyinjection/partialapplication
+
+3. creationpatterns/functionalfactories
+4. creationpatterns/partialapplication
 5. handling_void_and_no_input (exercise)
 6. loanpattern
 7. sideeffects

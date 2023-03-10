@@ -10,7 +10,7 @@ import org.reusable.tuples.pairs.Pairs;
  * The first issue is the fact that we keep working with Strings.
  * Check for example the input parameters of the methods (:compareCodes), (:getLocationFromCode).
  * Working with the lower-level types makes as avoid working with Domain-level types and
- * leading to needless validation and conversion code all over the place. It can also lead to silly errors when you
+ * leads to needless validation and conversion code all over the place. It can also lead to silly errors when you
  * mistake one String argument for another, e.g. when a function wants 3 strings and you place the first one in the slot of the 2nd one.
  * <p>
  * The 2nd issue is the fact that all the functionality for DepartmentCode and Location, that could have been part of these 2 classes,

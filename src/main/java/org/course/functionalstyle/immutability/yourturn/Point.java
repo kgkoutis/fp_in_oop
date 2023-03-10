@@ -9,12 +9,12 @@ public final class Point {
         this.y = y;
     }
 
-    public void move(Integer x,
-                     Integer y) {
-        if (x == null) x = 0;
-        if (y == null) y = 0;
-        this.x += x;
-        this.y += y;
+    public void move(Integer dx,
+                     Integer dy) {
+        if (dx == null) dx = 0;
+        if (dy == null) dy = 0;
+        this.x += dx;
+        this.y += dy;
     }
 
     @Override

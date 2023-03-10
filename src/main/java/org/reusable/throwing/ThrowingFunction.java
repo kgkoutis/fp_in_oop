@@ -1,5 +1,6 @@
 package org.reusable.throwing;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 @FunctionalInterface
@@ -17,7 +18,7 @@ public interface ThrowingFunction<T, U> extends Function<T, U> {
     }
 
     static <T, U> Function<T, U> uncheck(final ThrowingFunction<T, U> fn) {
+        Objects.requireNonNull(fn);
         return fn::apply;
     }
 }
-

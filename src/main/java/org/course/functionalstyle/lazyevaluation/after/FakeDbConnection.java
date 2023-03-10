@@ -5,7 +5,7 @@ import java.util.Objects;
 public final class FakeDbConnection {
     private final String currentThreadName;
 
-    FakeDbConnection(final String currentThreadName) {
+    public FakeDbConnection(final String currentThreadName) {
         this.currentThreadName = currentThreadName;
     }
 
