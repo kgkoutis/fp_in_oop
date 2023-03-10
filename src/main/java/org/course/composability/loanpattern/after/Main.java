@@ -1,12 +1,13 @@
 package org.course.composability.loanpattern.after;
 
-import java.util.concurrent.CompletableFuture;
+import org.reusable.Unit;
+
 import java.util.function.Function;
 
 /**
  * Notice how the resource management code is handled only in one place: in the executeWithResourceManagement method.
  * Everything else is retrofitted to be a callback that is passed not only its original dependencies (waitTimeInMs)
- * but also the resourceHolder that is being brought into scope by "somewhere else".
+ * but also the CustomFileReader that is being brought into scope by "somewhere else".
  * <p>
  * This pattern of abstracting away the resource management code into a separate method is called the Loan Pattern.
  * The callbacks are "borrowing" the resource from the resource management code.
@@ -16,31 +17,31 @@ import java.util.function.Function;
 
 public class Main {
     public static void main(final String[] args) {
-
-        final long waitTimeInMs1 = 1000; // 1 second
-        final long waitTimeInMs2 = 2000; // 2 seconds
-
-        final CompletableFuture<String> cf1 = CompletableFuture.supplyAsync(() -> Main.executeWithResourceManagement(waitTimeInMs1, Main::delayMs));
-        final CompletableFuture<String> cf2 = CompletableFuture.supplyAsync(() -> Main.executeWithResourceManagement(waitTimeInMs2, Main::delayMs));
-
-        CompletableFuture.allOf(cf1, cf2).join();
+        executeWithResourceManagement(Main::readFile);
     }
 
     // business logic code
     // has nothing to do with try-with-resources
-    private static Function<Long, String> delayMs(final ResourceHolder resourceHolder) {
-        return resourceHolder::delayMs;
+    private static Unit readFile(final CustomFileReader fileReader) {
+        fileReader.useResource();
+        // more business logic code...
+        businessLogic1();
+        businessLogic2();
+        return Unit.get();
     }
 
-    private static <R> R executeWithResourceManagement(final long waitTimeInMs,
-                                                       final Function<ResourceHolder, Function<Long, R>> callback) {
-        R result = null;
+    private static <R> void executeWithResourceManagement(final Function<CustomFileReader, R> callback) {
         // try-with-resources
-        try (final StopWatch stopWatch = new StopWatch()) {
-            result = callback.apply(stopWatch).apply(waitTimeInMs);
+        try (final CustomFileReader fileReader = new CustomFileReader()) {
+            callback.apply(fileReader);
         } catch (final Exception e) {
             System.out.println("Exception caught" + e);
         }
-        return result;
+    }
+
+    private static void businessLogic2() {
+    }
+
+    private static void businessLogic1() {
     }
 }

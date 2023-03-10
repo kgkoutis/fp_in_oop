@@ -1,11 +1,7 @@
 package org.course.composability.loanpattern.before;
 
-import java.util.concurrent.CompletableFuture;
-
 /**
- * Here we see two asynchronous tasks are being fired off and the main thread waits for both of them to complete.
- * <p>
- * The two actions that the tasks perform (execute1 and execute2) are wrapped in a try-with-resources block.
+ * Main performs an action which is wrapped in a try-with-resources block.
  * It is advisable when you are using resources from the Operating System to use try-with-resources
  * and dispose them as soon as you don't need them anymore, and NOT rely on the garbage collector to do the job.
  * Some of these resources are scarce and you don't want to run out of them. So it is always a good idea to close
@@ -20,24 +16,20 @@ import java.util.concurrent.CompletableFuture;
  */
 public class Main {
     public static void main(final String[] args) {
-
-        final long waitTimeInMs1 = 1000; // 1 second
-        final long waitTimeInMs2 = 2000; // 2 seconds
-
-        final CompletableFuture<String> cf1 = CompletableFuture.supplyAsync(() -> Main.execute(waitTimeInMs1)); // asynchronous operation of execute1
-        final CompletableFuture<String> cf2 = CompletableFuture.supplyAsync(() -> Main.execute(waitTimeInMs2)); // asynchronous operation of execute2
-
-        CompletableFuture.allOf(cf1, cf2).join(); // wait for both operations to complete
-    }
-
-    private static String execute(final long waitTimeInMs) {
-        String result = null;
         // try-with-resources
-        try (final ResourceHolder resourceHolder = new StopWatch()) {
-            result = resourceHolder.delayMs(waitTimeInMs);
+        try (final ResourceHolder resourceHolder = new CustomFileReader()) {
+            resourceHolder.useResource();
+            // more business logic code...
+            businessLogic1();
+            businessLogic2();
         } catch (final Exception e) {
             System.out.println("Exception caught" + e);
         }
-        return result;
+    }
+
+    private static void businessLogic2() {
+    }
+
+    private static void businessLogic1() {
     }
 }

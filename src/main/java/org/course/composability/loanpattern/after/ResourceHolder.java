@@ -1,5 +1,7 @@
 package org.course.composability.loanpattern.after;
 
+import org.reusable.Unit;
+
 public interface ResourceHolder extends AutoCloseable {
-    String delayMs(long waitTimeInMs);
+    Unit useResource();
 }
